@@ -15,8 +15,15 @@ const userSchema = mongoose.Schema({
     required: true
   },
   address: {
-    type: String,
-    required: true
+    location: {
+      type: String
+    },
+    longitude: {
+      type: Number
+    },
+    latitude: {
+      type: Number
+    }
   },
   contact_number: {
     type: Number,

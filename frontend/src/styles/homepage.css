@@ -1,0 +1,24 @@
+.homepageImg{
+  position: relative;
+  height: 100vh;
+  width: 99vw;
+}
+
+.AppointmentBtn{
+  border-radius: 15px;
+  position: absolute;
+  left: 20%;
+  top: 85%;
+}
+
+.homepageCard{
+  text-align: center;
+}
+
+.homepageCard .title {
+  color: #e99002;
+}
+
+.homepageCard .desc{
+  height: 70px;
+}

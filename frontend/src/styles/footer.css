@@ -1,0 +1,22 @@
+.footerMain{
+  height: 80vh;
+  background-image: linear-gradient(#6dd5ed, #2193b0);
+}
+
+h1{
+  font-weight: 900;
+  font-size: 54px;
+  margin-top: 140px;
+}
+
+h6{
+  margin-top: 40px;
+}
+
+.appointmentBtn{
+  margin-top: 70px;
+}
+
+.text-lg{
+  font-size: 20px;
+}
