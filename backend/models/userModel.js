@@ -31,33 +31,38 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  medical_history: [
-    {
-      prescriptions: [
-        {
-          type: String,
-          required: false
-        }
-      ],
-      last_visited: {
-        type: Date,
-        required: false
-      }
-    }
-  ],
-  appointments: [
-    {
-      date: {
-        type: Date,
-        required: true
+  appointment: [{
+    appointmentId: {
+      type: Number
+    },
+    symptoms: {
+      type: String
+    },
+    appointmentDate: {
+      type: Date
+    },
+    department: {
+      type: String
+    },
+    doctor: {
+      type: String,
+    },
+    prescription: {
+      symptoms: {
+        type: String
       },
-      doctor: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Doctor'
+      medicine: {
+        type: String
+      },
+      comments: {
+        type: String
+      },
+      date: {
+        type: Date
       }
     }
-  ]
+  }]
+
 }, {
   timestamps: true
 })

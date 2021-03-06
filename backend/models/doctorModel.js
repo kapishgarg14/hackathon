@@ -23,7 +23,7 @@ const doctorSchema = mongoose.Schema({
   },
   image: {
     type: String,
-    required: true
+    required: false
   },
   address: {
     type: String,
@@ -43,7 +43,7 @@ const doctorSchema = mongoose.Schema({
     required: true
   },
   reviews: [reviewSchema],
-  rating: {
+  avg_rating: {
     type: Number,
     required: true,
     default: 0
@@ -63,7 +63,7 @@ const doctorSchema = mongoose.Schema({
   },
   paymentMethod: {
     type: String,
-    required: true,
+    required: false,
   },
   paymentResult: {
     id: { type: String },
@@ -74,29 +74,65 @@ const doctorSchema = mongoose.Schema({
   appointment_available: {
     type: Boolean,
     required: true,
-    default: true
+    default: false
   },
   start_time: {
-    type: Number,
-    required: true
+    type: Date,
+    required: false
   },
   end_time: {
-    type: Number,
-    required: true
+    type: Date,
+    required: false
   },
-  patients: [
-    {
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
+  appointments: [{
+    appointmentId: {
+      type: Number
+    },
+    patient: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    },
+    symptoms: {
+      type: String
+    },
+    appointmentDate: {
+      type: Date
+    },
+    department: {
+      type: String
+    },
+    doctor: {
+      type: String,
+    },
+    prescription: {
+      symptoms: {
+        type: String
+      },
+      medicine: {
+        type: String
+      },
+      comments: {
+        type: String
+      },
+      date: {
+        type: Date
       }
     }
-  ]
+  }],
 }, {
   timestamps: true
 })
 
-const Products = mongoose.model('Doctor', doctorSchema)
+doctorSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
+    next()
+  }
 
-module.exports = Products
+  const salt = await bcrypt.genSalt(10)
+  this.password = await bcrypt.hash(this.password, salt)
+})
+
+
+const Doctor = mongoose.model('Doctor', doctorSchema)
+
+module.exports = Doctor

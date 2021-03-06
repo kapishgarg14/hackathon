@@ -1,0 +1,63 @@
+const bcrypt = require('bcryptjs')
+
+const doctors = [
+  {
+    name: 'Dr. VK Jha',
+    age: 60,
+    gender: 'Male',
+    address: '13, Mandawali Main Rd, I.P.Extension, Patparganj, Delhi, 110092',
+    contact_number: 9999999000,
+    email: 'vk@test.com',
+    password: bcrypt.hashSync('000000', 10),
+    avg_rating: 4,
+    numReviews: 6,
+    speciality: 'Heart',
+    fees: 2000,
+    appointment_available: false,
+  },
+  {
+    name: 'Dr. Rajesh Singh',
+    age: 48,
+    gender: 'Male',
+    address: '13, Mandawali Main Rd, I.P.Extension, Patparganj, Delhi, 110092',
+    contact_number: 7777777000,
+    email: 'rajesh@test.com',
+    password: bcrypt.hashSync('000000', 10),
+    avg_rating: 4,
+    numReviews: 12,
+    speciality: 'ENT',
+    fees: 3000,
+    appointment_available: true,
+  },
+  {
+    name: 'Dr. Sunil Khandelwal',
+    age: 57,
+    gender: 'Male',
+    address: '13, Mandawali Main Rd, I.P.Extension, Patparganj, Delhi, 110092',
+    contact_number: 1231212123,
+    email: 'sunil@test.com',
+    password: bcrypt.hashSync('000000', 10),
+    avg_rating: 3.5,
+    numReviews: 18,
+    speciality: 'Kidney',
+    fees: 2500,
+    appointment_available: false,
+  },
+  {
+    name: 'Dr. Mahesh Gulati',
+    age: 39,
+    gender: 'Male',
+    address: '13, Mandawali Main Rd, I.P.Extension, Patparganj, Delhi, 110092',
+    contact_number: 1111111111,
+    email: 'mahesh@test.com',
+    password: bcrypt.hashSync('000000', 10),
+    avg_rating: 5,
+    numReviews: 2,
+    speciality: 'Stomach',
+    fees: 3000,
+    appointment_available: true,
+  },
+
+]
+
+module.exports = doctors
