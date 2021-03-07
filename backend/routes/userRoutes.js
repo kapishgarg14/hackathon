@@ -4,7 +4,7 @@ const router = express.Router()
 const User = require('../models/userModel')
 const bcrypt = require('bcryptjs')
 const generateToken = require('../utils/generateToken')
-const protect = require('../middlewares/authMiddleware')
+const { protectUser } = require('../middlewares/authMiddleware')
 
 
 //admin middleware 
@@ -92,6 +92,7 @@ router.post('/login', asyncHandler(async (req, res) => {
     })
   } else {
     res.status(401)
+    console.error('Invalid email or password')
     throw new Error('Invalid email or password')
   }
 }))
@@ -99,27 +100,27 @@ router.post('/login', asyncHandler(async (req, res) => {
 
 // to get a logged in user.
 //private
-router.get('/profile', protect, asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id)
-  console.log(req.user._id)
+// router.get('/profile', protect, asyncHandler(async (req, res) => {
+//   const user = await User.findById(req.user._id)
+//   console.log(req.user._id)
 
-  if (user) {
-    res.json({
-      _id: user._id,
-      name: user.name,
-      age: user.age,
-      gender: user.gender,
-      address: user.address,
-      contact_number: user.contact_number,
-      email: user.email,
-    })
-  } else {
-    res.status(404)
-    throw new Error('User not found !')
-  }
+//   if (user) {
+//     res.json({
+//       _id: user._id,
+//       name: user.name,
+//       age: user.age,
+//       gender: user.gender,
+//       address: user.address,
+//       contact_number: user.contact_number,
+//       email: user.email,
+//     })
+//   } else {
+//     res.status(404)
+//     throw new Error('User not found !')
+//   }
 
 
-}))
+// }))
 
 
 
@@ -127,34 +128,34 @@ router.get('/profile', protect, asyncHandler(async (req, res) => {
 // to update a user profile.
 // PUT request
 // private
-router.put('/profile', protect, asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id)
-  //console.log(req.user._id)
+// router.put('/profile', protect, asyncHandler(async (req, res) => {
+//   const user = await User.findById(req.user._id)
+//   //console.log(req.user._id)
 
-  if (user) {
-    user.name = req.body.name || user.name
-    user.email = req.body.email || user.email
+//   if (user) {
+//     user.name = req.body.name || user.name
+//     user.email = req.body.email || user.email
 
-    if (req.user.password) {
-      user.password = req.user.password
-    }
+//     if (req.user.password) {
+//       user.password = req.user.password
+//     }
 
-    const updatedUser = await user.save()
+//     const updatedUser = await user.save()
 
-    res.json({
-      _id: updatedUser._id,
-      name: updatedUser.name,
-      email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin,
-      token: generateToken(updatedUser._id)
-    })
-  } else {
-    res.status(404)
-    throw new Error('User not found !')
-  }
+//     res.json({
+//       _id: updatedUser._id,
+//       name: updatedUser.name,
+//       email: updatedUser.email,
+//       isAdmin: updatedUser.isAdmin,
+//       token: generateToken(updatedUser._id)
+//     })
+//   } else {
+//     res.status(404)
+//     throw new Error('User not found !')
+//   }
 
 
-}))
+// }))
 
 
 //delete a user

@@ -4,12 +4,19 @@ import { Button, Container, Row, Col } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import HomepageCard from '../components/HomepageCard'
 
+
+let userData = localStorage.getItem('userInfo');
+let doctorData = localStorage.getItem('doctorInfo');
+
+console.log(userData)
+console.log(doctorData)
+
 const Homepage = () => {
   return (
     <div className='p-0'>
       <img src='/images/homepage.jpg' alt='default' className='homepageImg' />
       <LinkContainer to='/appointment'>
-        <Button variant="warning" size="lg" className='AppointmentBtn'>
+        <Button variant="outline-warning" size="lg" className='AppointmentBtn'>
           Make an Appointment
         </Button>
       </LinkContainer>

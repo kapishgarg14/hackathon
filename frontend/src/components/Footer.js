@@ -12,13 +12,13 @@ const Footer = () => {
           <h6>24/7 SERVICE. SAME DAY APPOINTMENTS ARE AVAILABLE</h6>
           <Row>
             <Col className='text-center text-white text-lg' sm={4}>
-              <i class="fas fa-phone-alt"></i> (344) 532-2352
+              <i className="fas fa-phone-alt"></i> (344) 532-2352
             </Col>
             <Col className='text-center text-white text-lg' sm={4}>
-              <i class="far fa-envelope"></i> support@shop.com
+              <i className="far fa-envelope"></i> support@shop.com
             </Col>
             <Col className='text-center text-white text-lg' sm={4}>
-              <i class="fas fa-search-location"></i>1235 Navi Mumbai, Mumbai, Maharashtra
+              <i className="fas fa-search-location"></i>1235 Navi Mumbai, Mumbai, Maharashtra
             </Col>
           </Row>
 
@@ -29,14 +29,14 @@ const Footer = () => {
       </div>
 
 
-      <Row className='bg-dark text-white px-5 socialNav'>
+      <Row className='bg-dark text-white p-0 socialNav'>
         <Col sm={1}></Col>
         <Col sm={9}>Designed By: <b>Us</b> | InnovateNSUT</Col>
         <Col sm={1}>
           <Row>
-            <Col sm={4}><i class="fab fa-facebook-f"></i></Col>
-            <Col sm={4}><i class="fab fa-google-plus-g"></i></Col>
-            <Col sm={4}><i class="fab fa-twitter"></i></Col>
+            <Col sm={4}><i className="fab fa-facebook-f"></i></Col>
+            <Col sm={4}><i className="fab fa-google-plus-g"></i></Col>
+            <Col sm={4}><i className="fab fa-twitter"></i></Col>
           </Row>
         </Col>
         <Col sm={1}></Col>

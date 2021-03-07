@@ -1,7 +1,25 @@
 import React from 'react'
 import '../styles/navbar.css'
-import { Container, Nav, Navbar, NavDropdown, Form, Button } from 'react-bootstrap'
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+
+
+
+let userData = localStorage.getItem('userInfo');
+let doctorData = localStorage.getItem('doctorInfo');
+
+console.log(userData)
+console.log(doctorData)
+
+
+const userLogout = () => {
+  localStorage.removeItem('userInfo')
+}
+
+const doctorLogout = () => {
+  localStorage.removeItem('doctorInfo')
+}
+
 
 
 const TopNav = () => {
@@ -14,7 +32,7 @@ const TopNav = () => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ml-auto">
           <LinkContainer to='/covid'>
-            <Nav.Link inactive>COVID-19</Nav.Link>
+            <Nav.Link>COVID-19</Nav.Link>
           </LinkContainer>
           <LinkContainer to='/bloodTest'>
             <Nav.Link >Blood Tests</Nav.Link>
@@ -35,12 +53,34 @@ const TopNav = () => {
           <LinkContainer to='/contactus'>
             <Nav.Link >Contact Us</Nav.Link>
           </LinkContainer>
-          <LinkContainer to='/login'>
-            <Nav.Link >Login</Nav.Link>
-          </LinkContainer>
-          <LinkContainer to='/register'>
-            <Nav.Link >Register</Nav.Link>
-          </LinkContainer>
+          {
+            userData &&
+            <LinkContainer to='/'>
+              <Nav.Link onClick={userLogout()}>Logout</Nav.Link>
+            </LinkContainer>
+          }
+          {
+            doctorData &&
+            <LinkContainer to='/'>
+              <Nav.Link onClick={doctorLogout()}>Logout</Nav.Link>
+            </LinkContainer>
+          }
+          {
+            !userData &&
+            !doctorData &&
+            <LinkContainer to='/loginchoice'>
+              <Nav.Link >Login</Nav.Link>
+            </LinkContainer>
+          }
+          {
+            !userData &&
+            !doctorData &&
+            <LinkContainer to='/registerchoice'>
+              <Nav.Link >Register</Nav.Link>
+            </LinkContainer>
+          }
+
+
         </Nav>
       </Navbar.Collapse>
     </Navbar>

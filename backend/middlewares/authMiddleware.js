@@ -33,6 +33,8 @@ const protectUser = asyncHandler(async (req, res, next) => {
   }
 })
 
+
+
 const protectDoctor = asyncHandler(async (req, res, next) => {
   let token = null;
 
@@ -61,4 +63,7 @@ const protectDoctor = asyncHandler(async (req, res, next) => {
   }
 })
 
-module.exports = { protectUser, protectDoctor }
+module.exports = {
+  protectUser: protectUser,
+  protectDoctor: protectDoctor
+}
