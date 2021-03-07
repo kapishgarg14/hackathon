@@ -1,22 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import FormContainer from '../components/FormContainer'
 import '../styles/login.css'
 
+
+let doctorData = localStorage.getItem('doctorData');
+
+
+
 const DoctorLoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
 
-  //const redirect = location.search ? location.search.split('=') : '/'
-  //console.group(redirect)
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     history.push(redirect)
-  //   }
-  // }, [history, userInfo, redirect])
 
 
 
@@ -31,7 +29,10 @@ const DoctorLoginPage = () => {
       }
       const { data } = await axios.post('/api/doctors/login', { email, password }, config)
       console.log(data)
-      localStorage.setItem('doctorInfo', JSON.stringify(data))
+      localStorage.setItem('doctorData', JSON.stringify(data))
+
+      window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
+
 
     } catch (err) {
       console.error(err)

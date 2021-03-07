@@ -5,7 +5,7 @@ import axios from 'axios'
 import '../styles/register.css'
 import FormContainer from '../components/FormContainer'
 
-const Register = ({ location, history }) => {
+const Register = ({ history }) => {
   const [name, setName] = useState('')
   const [age, setAge] = useState(0)
   const [email, setEmail] = useState('')
@@ -17,8 +17,6 @@ const Register = ({ location, history }) => {
   const [validated, setValidated] = useState(false);
 
 
-  const redirect = location.search ? location.search.split('=') : '/'
-  console.group(redirect)
 
 
   const registerUser = async (name, age, contact_number, gender, address, email, password) => {
@@ -29,9 +27,10 @@ const Register = ({ location, history }) => {
           'Content-Type': 'application/json'
         }
       }
-      const { data } = await axios.post('/api/users/login', { name, age, contact_number, gender, address, email, password }, config)
+      const { data } = await axios.post('/api/users', { name, age, contact_number, gender, address, email, password }, config)
       console.log(data)
       localStorage.setItem('userInfo', JSON.stringify(data))
+      history.push('/')
 
     } catch (err) {
       console.error(err)

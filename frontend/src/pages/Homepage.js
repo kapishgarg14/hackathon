@@ -5,8 +5,8 @@ import { LinkContainer } from 'react-router-bootstrap'
 import HomepageCard from '../components/HomepageCard'
 
 
-let userData = localStorage.getItem('userInfo');
-let doctorData = localStorage.getItem('doctorInfo');
+let userData = localStorage.getItem('userData');
+let doctorData = localStorage.getItem('doctorData');
 
 console.log(userData)
 console.log(doctorData)

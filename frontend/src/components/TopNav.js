@@ -5,24 +5,32 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 
 
-let userData = localStorage.getItem('userInfo');
-let doctorData = localStorage.getItem('doctorInfo');
+let userData = localStorage.getItem('userData');
+let doctorData = localStorage.getItem('doctorData');
 
 console.log(userData)
 console.log(doctorData)
 
 
 const userLogout = () => {
-  localStorage.removeItem('userInfo')
+  localStorage.removeItem('userData')
+
+  window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
+
 }
 
 const doctorLogout = () => {
-  localStorage.removeItem('doctorInfo')
+  localStorage.removeItem('doctorData')
+
+  window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
+
 }
 
 
 
 const TopNav = () => {
+
+
   return (
     <Navbar collapseOnSelect sticky='top' expand="lg" bg="primary" variant="dark" className='customNavbar py-3 px-5'>
       <LinkContainer to='/'>
