@@ -13,6 +13,7 @@ import LoginDoctorUserChoicePage from "./pages/LoginDoctorUserChoicePage";
 import RegisterDoctorUserChoicePage from "./pages/RegisterDoctorUserChoicePage";
 import HeartPage from "./pages/HeartPrediction";
 import getMedicine from "./pages/Medicine";
+import AboutUs from "./pages/AboutUs"
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route exact path="/covid" component={CovidPage} />
         <Route exact path="/covidprediction" component={CovidPrediction} />
         <Route exact path="/medicine" component={getMedicine} />
+        <Route exact path="/about" component={AboutUs} />
       </main>
     </Router>
   );
