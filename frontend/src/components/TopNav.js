@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/navbar.css'
 import { Link } from 'react-router-dom'
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
@@ -9,8 +9,6 @@ import { LinkContainer } from 'react-router-bootstrap'
 let userData = localStorage.getItem('userData');
 let doctorData = localStorage.getItem('doctorData');
 
-console.log(userData)
-console.log(doctorData)
 
 
 const userLogout = () => {
@@ -29,8 +27,37 @@ const doctorLogout = () => {
 
 
 
-const TopNav = () => {
+const TopNav = ({ data, type }) => {
 
+  const [userlogin, setUserlogin] = useState(false)
+  const [doctorlogin, setDoctorlogin] = useState(false)
+
+  useEffect(() => {
+    if (type) {
+      userData = data
+      //fillState(type);
+      //setUserlogin(true);
+      //setDoctorlogin(false)
+    }
+    else {
+      doctorData = data
+      //fillState(type);
+      //setUserlogin(false)
+      //setDoctorlogin(true);
+    }
+    function fillState(type) {
+      if (type) {
+        setUserlogin(true);
+        setDoctorlogin(false)
+      }
+      else {
+        setUserlogin(false)
+        setDoctorlogin(true);
+      }
+    }
+    console.log(userData)
+    console.log(doctorData)
+  }, [data, type])
 
   return (
     <Navbar collapseOnSelect sticky='top' expand="lg" bg="primary" variant="dark" className='customNavbar py-3 px-5'>
@@ -120,6 +147,7 @@ const TopNav = () => {
       </Navbar.Collapse>
     </Navbar>
   )
+
 }
 
 export default TopNav

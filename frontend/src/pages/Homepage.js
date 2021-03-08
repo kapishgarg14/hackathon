@@ -11,17 +11,33 @@ import Loader from '../components/Loader'
 
 let userData = localStorage.getItem('userData');
 let doctorData = localStorage.getItem('doctorData');
+let type = 1;
 
 
-console.log(userData)
-console.log(doctorData)
-
-const Homepage = () => {
+const Homepage = ({ location, history }) => {
 
   const [doctors, setDoctors] = useState(null)
   const [loading, setLoading] = useState(true)
 
+  const redirect = location.search ? location.search.split('=') : '/'
+
+
+
   useEffect(() => {
+    userData = localStorage.getItem('userData');
+    doctorData = localStorage.getItem('doctorData');
+    console.log(userData)
+    if (userData) {
+      type = 1;
+      console.log('hello')
+      history.push(redirect)
+    }
+    else {
+      type = 0;
+      console.log('hello')
+      history.push(redirect)
+
+    }
     async function getDoctors() {
       try {
 
@@ -45,7 +61,7 @@ const Homepage = () => {
     }
 
     getDoctors()
-  }, [])
+  }, [history, redirect])
 
 
 
@@ -53,7 +69,7 @@ const Homepage = () => {
     <>
       {loading ? <Loader /> : (
         <>
-          <TopNav />
+          <TopNav data={userData} type={type} />
 
           <div className='p-0'>
 

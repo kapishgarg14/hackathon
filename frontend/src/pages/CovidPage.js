@@ -12,9 +12,6 @@ let userData = localStorage.getItem('userData');
 let doctorData = localStorage.getItem('doctorData');
 
 
-console.log(userData)
-console.log(doctorData)
-
 const CovidPage = () => {
 
   const [doctors, setDoctors] = useState(null)
