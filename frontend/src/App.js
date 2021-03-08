@@ -11,6 +11,7 @@ import UserRegister from './pages/UserRegister'
 import DoctorRegister from './pages/DoctorRegister'
 import LoginDoctorUserChoicePage from './pages/LoginDoctorUserChoicePage'
 import RegisterDoctorUserChoicePage from './pages/RegisterDoctorUserChoicePage'
+import HeartPage from './pages/HeartPrediction'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route exact path='/doctorregister' component={DoctorRegister} />
         <Route exact path='/loginchoice' component={LoginDoctorUserChoicePage} />
         <Route exact path='/registerchoice' component={RegisterDoctorUserChoicePage} />
+        <Route exact path='/heartprediction' component={HeartPage} />
         <Route exact path='/covid' component={CovidPage} />
         <Route exact path='/covidprediction' component={CovidPrediction} />
       </main>
