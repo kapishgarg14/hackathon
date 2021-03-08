@@ -21,10 +21,10 @@ console.log(doctorData)
 const CovidPage = ({ history }) => {
 
 
-  const [age, setAge] = useState(0)
-  const [gender, setGender] = useState(null)
+  const [age, setAge] = useState(18)
+  const [gender, setGender] = useState(null);
   const [temp, setTemp] = useState(null)
-  const [cough, setCough] = useState(null)
+  const [cough, setCough] = useState(0)
   const [throat, setThroat] = useState(null)
   const [weakness, setWeakness] = useState(null)
   const [breathing, setBreathing] = useState(null)
@@ -88,29 +88,393 @@ const CovidPage = ({ history }) => {
             <FormContainer>
               <h1>Take the Survey </h1>
               <Form onSubmit={submitHandler}>
-                <Form.Group controlId="email">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder='Enter email ...'
-                    value={stroke}
 
-                  ></Form.Control>
-
-                </Form.Group>
-
-                <Form.Group controlId="password">
+                <Form.Group controlId="age">
                   <Form.Label>Age</Form.Label>
                   <Form.Control
                     type="number"
-                    placeholder='Enter Password ...'
-                    value={smell}
-
+                    placeholder='Enter Age ...'
+                    value={age}
+                    onChange={e=>setAge(e.currentTarget.value)}
                   ></Form.Control>
 
                 </Form.Group>
+                
 
-                <Button type='submit' variant='success'>Detect</Button>
+                <Form.Group controlId="gender">
+                  <Form.Label>Sex</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Male"
+                  value = "0"
+                  checked={gender === "0"}
+                  onChange={e => setGender(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="Female"
+                  value = "1"
+                  checked={gender === "1"}
+                  onChange={e => setGender(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="temperature">
+                  <Form.Label>Body temperature</Form.Label>
+                  <Form.Control
+                    type="number"
+                    placeholder='Enter your measured body temperature ...'
+                    onChange={e=>{setTemp(e.currentTarget.value)}}
+                    value={temp}
+
+                  ></Form.Control>
+                </Form.Group>
+
+
+                <Form.Group controlId="cough">
+                  <Form.Label>Are you suffering from dry Cough?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={cough === "1"}
+                  onChange={e => setCough(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={cough === "0"}
+                  onChange={e => setCough(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="throat">
+                  <Form.Label>Are you suffering from sour throat?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={throat === "1"}
+                  onChange={e => setThroat(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={throat === "0"}
+                  onChange={e => setThroat(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+
+                <Form.Group controlId="body">
+                  <Form.Label>Do you feel weakness in your body?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={weakness === "1"}
+                  onChange={e => setWeakness(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={weakness === "0"}
+                  onChange={e => setWeakness(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+
+                <Form.Group controlId="breathing">
+                  <Form.Label>Did you have any breathing problems for the past few days?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={breathing === "1"}
+                  onChange={e => setBreathing(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={breathing === "0"}
+                  onChange={e => setBreathing(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+
+                <Form.Group controlId="drowsiness">
+                  <Form.Label>Have you had drowsiness for the past few days?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={drowsiness === "1"}
+                  onChange={e => setDrowsiness(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={drowsiness === "0"}
+                  onChange={e => setDrowsiness(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="chest">
+                  <Form.Label>Did you at any time feel pain in your chest for the past few days?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={chest === "1"}
+                  onChange={e => setChest(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={chest === "0"}
+                  onChange={e => setChest(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+
+                <Form.Group controlId="travel">
+                  <Form.Label>Have you evered travelled to a covid infeccted area?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={travel === "1"}
+                  onChange={e => setTravel(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={travel === "0"}
+                  onChange={e => setTravel(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="diabetes">
+                  <Form.Label>Do you have a diabetes problem?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={diabetes === "1"}
+                  onChange={e => setDiabetes(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={diabetes === "0"}
+                  onChange={e => setDiabetes(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+
+                <Form.Group controlId="heart">
+                  <Form.Label>Do you have heart problems?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={heart === "1"}
+                  onChange={e => setHeart(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={heart === "0"}
+                  onChange={e => setHeart(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+
+                <Form.Group controlId="lungs">
+                  <Form.Label>Do you have lung problems?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={lung === "1"}
+                  onChange={e => setLung(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={lung === "0"}
+                  onChange={e => setLung(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="stroke">
+                  <Form.Label>Do you have a history of strokes or reduced immunity?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={stroke === "1"}
+                  onChange={e => setStroke(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={stroke === "0"}
+                  onChange={e => setStroke(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="symptoms">
+                  <Form.Label>Have your symptoms worsened over the past few days?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={symptoms === "1"}
+                  onChange={e => setSymptoms(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={symptoms === "0"}
+                  onChange={e => setSymptoms(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+
+                <Form.Group controlId="BP">
+                  <Form.Label>Do you have high blood pressure?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={BP === "1"}
+                  onChange={e => setBP(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={BP === "0"}
+                  onChange={e => setBP(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="kidney">
+                  <Form.Label>Do you have kidney problems?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={kidney === "1"}
+                  onChange={e => setKidney(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={kidney === "0"}
+                  onChange={e => setKidney(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="appetite">
+                  <Form.Label>Is there something abnormal with your appetite?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={appetite === "1"}
+                  onChange={e => setAppetite(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={appetite === "0"}
+                  onChange={e => setAppetite(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="smell">
+                  <Form.Label>Have you suffered from loss of sense of smell?</Form.Label>
+                  <Form.Check 
+                  type="radio"
+                  label="Yes"
+                  value = "1"
+                  checked={smell === "1"}
+                  onChange={e => setSmell(e.currentTarget.value)}
+                  />
+
+                  <Form.Check 
+                  type="radio"
+                  label="No"
+                  value = "0"
+                  checked={smell === "0"}
+                  onChange={e => setSmell(e.currentTarget.value)}
+                  />
+                </Form.Group>
+
+
+
+                <Button type='button' 
+                variant='success'
+                onClick = {()=>{
+                  let query = "?"
+                  query = query+"q1="+age+"&"
+                  query = query+"q2="+gender+"&"
+                  query = query+"q3="+temp+"&"
+                  query = query+"q4="+cough+"&"
+                  query = query+"q5="+throat+"&"
+                  query = query+"q6="+weakness+"&"
+                  query = query+"q7="+breathing+"&"
+                  query = query+"q8="+drowsiness+"&"
+                  query = query+"q9="+chest+"&"
+                  query = query+"q10="+travel+"&"
+                  query = query+"q11="+diabetes+"&"
+                  query = query+"q12="+heart+"&"
+                  query = query+"q13="+lung+"&"
+                  query = query+"q14="+stroke+"&"
+                  query = query+"q15="+symptoms+"&"
+                  query = query+"q16="+BP+"&"
+                  query = query+"q17="+kidney+"&"
+                  query = query+"q18="+appetite+"&"
+                  query = query+"q19="+smell
+
+                  let apicall = 'https://hacknsut21api.herokuapp.com/covid/'
+                  apicall = apicall + query
+                  console.log(apicall)
+
+                }}
+                >Detect</Button>
               </Form>
 
               <Row className='py-3'>
