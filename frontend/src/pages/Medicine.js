@@ -70,7 +70,7 @@ const GetMedicine= ({ history }) => {
                 <Form.Group controlId="age">
                   <Form.Label>Medicine Name</Form.Label>
                   <Form.Control
-                    type="number"
+                    type="text"
                     placeholder="Enter Medicine Name ..."
                     value={name}
                     onChange={(e) => setName(e.currentTarget.value)}
