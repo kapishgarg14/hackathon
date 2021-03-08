@@ -1,38 +1,42 @@
-import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 //import { Container } from 'react-bootstrap'
 
-import Homepage from './pages/Homepage'
-import CovidPage from './pages/CovidPage'
-import TestingPage from './pages/TestingPage'
-import AppointmentPage from './pages/AppointmentPage'
-import CovidPrediction from './pages/CovidPrediction'
-import UserLoginPage from './pages/UserLoginPage'
-import DoctorLoginPage from './pages/DoctorLoginPage'
-import UserRegister from './pages/UserRegister'
-import DoctorRegister from './pages/DoctorRegister'
-import LoginDoctorUserChoicePage from './pages/LoginDoctorUserChoicePage'
-import RegisterDoctorUserChoicePage from './pages/RegisterDoctorUserChoicePage'
-import HeartPage from './pages/HeartPrediction'
-
+import Homepage from "./pages/Homepage";
+import CovidPage from "./pages/CovidPage";
+import CovidPrediction from "./pages/CovidPrediction";
+import UserLoginPage from "./pages/UserLoginPage";
+import DoctorLoginPage from "./pages/DoctorLoginPage";
+import UserRegister from "./pages/UserRegister";
+import DoctorRegister from "./pages/DoctorRegister";
+import LoginDoctorUserChoicePage from "./pages/LoginDoctorUserChoicePage";
+import RegisterDoctorUserChoicePage from "./pages/RegisterDoctorUserChoicePage";
+import HeartPage from "./pages/HeartPrediction";
+import getMedicine from "./pages/Medicine";
 
 function App() {
   return (
     <Router>
-
       <main>
-        <Route exact path='/' component={Homepage} />
-        <Route exact path='/appointment' component={AppointmentPage} />
-        <Route exact path='/userlogin' component={UserLoginPage} />
-        <Route exact path='/doctorlogin' component={DoctorLoginPage} />
-        <Route exact path='/userregister' component={UserRegister} />
-        <Route exact path='/doctorregister' component={DoctorRegister} />
-        <Route exact path='/loginchoice' component={LoginDoctorUserChoicePage} />
-        <Route exact path='/registerchoice' component={RegisterDoctorUserChoicePage} />
-        <Route exact path='/heartprediction' component={HeartPage} />
-        <Route exact path='/covid' component={CovidPage} />
-        <Route exact path='/covidprediction' component={CovidPrediction} />
-        <Route exact path='/testing' component={TestingPage} />
+        <Route exact path="/" component={Homepage} />
+        <Route exact path="/userlogin" component={UserLoginPage} />
+        <Route exact path="/doctorlogin" component={DoctorLoginPage} />
+        <Route exact path="/userregister" component={UserRegister} />
+        <Route exact path="/doctorregister" component={DoctorRegister} />
+        <Route
+          exact
+          path="/loginchoice"
+          component={LoginDoctorUserChoicePage}
+        />
+        <Route
+          exact
+          path="/registerchoice"
+          component={RegisterDoctorUserChoicePage}
+        />
+        <Route exact path="/heartprediction" component={HeartPage} />
+        <Route exact path="/covid" component={CovidPage} />
+        <Route exact path="/covidprediction" component={CovidPrediction} />
+        <Route exact path="/medicine" component={getMedicine} />
       </main>
     </Router>
   );
