@@ -15,7 +15,7 @@ let doctorData = localStorage.getItem("doctorData");
 console.log(userData);
 console.log(doctorData);
 
-const getMedicine= ({ history }) => {
+const GetMedicine= ({ history }) => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -91,4 +91,4 @@ const getMedicine= ({ history }) => {
   );
 };
 
-export default getMedicine;
+export default GetMedicine;
