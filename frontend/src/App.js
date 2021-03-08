@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Homepage from './pages/Homepage'
 import CovidPage from './pages/CovidPage'
+import TestingPage from './pages/TestingPage'
+import AppointmentPage from './pages/AppointmentPage'
 import CovidPrediction from './pages/CovidPrediction'
 import UserLoginPage from './pages/UserLoginPage'
 import DoctorLoginPage from './pages/DoctorLoginPage'
@@ -20,6 +22,7 @@ function App() {
 
       <main>
         <Route exact path='/' component={Homepage} />
+        <Route exact path='/appointment' component={AppointmentPage} />
         <Route exact path='/userlogin' component={UserLoginPage} />
         <Route exact path='/doctorlogin' component={DoctorLoginPage} />
         <Route exact path='/userregister' component={UserRegister} />
@@ -29,6 +32,7 @@ function App() {
         <Route exact path='/heartprediction' component={HeartPage} />
         <Route exact path='/covid' component={CovidPage} />
         <Route exact path='/covidprediction' component={CovidPrediction} />
+        <Route exact path='/testing' component={TestingPage} />
       </main>
     </Router>
   );

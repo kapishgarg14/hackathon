@@ -32,28 +32,41 @@ const HeartPage = ({ history }) => {
   const [exang, setExang] = useState(null)
   const [oldpeak, setOldpeak] = useState(null)
   const [thal, setThal] = useState(null)
- 
+
   const [loading, setLoading] = useState(false)
 
-  // const checkCovid = async (email, password) => {
-  //   try {
+  const checkHeart = async (age, gender, cp, trestbps, col, fbs, ecg, thalach, exang, oldpeak, thal) => {
+    try {
 
-  //     const config = {
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       }
-  //     }
-  //     const { data } = await axios.post('/api/doctors/login', { email, password }, config)
-  //     console.log(data)
-  //     localStorage.setItem('doctorData', JSON.stringify(data))
-  //     history.push('/')
-  //     //window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        params: {
+          q1: age,
+          q2: gender,
+          q3: cp,
+          q4: trestbps,
+          q5: col,
+          q6: fbs,
+          q7: ecg,
+          q8: thalach,
+          q9: exang,
+          q10: oldpeak,
+          q11: thal
+        }
+      }
+      const data = await axios.post('https://hacknsut21api.herokuapp.com/heart/', config)
+      console.log(data)
+      // localStorage.setItem('doctorData', JSON.stringify(data))
+      // history.push('/')
+      //window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
 
 
-  //   } catch (err) {
-  //     console.error(err)
-  //   }
-  // }
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
 
 
@@ -88,28 +101,28 @@ const HeartPage = ({ history }) => {
                     type="number"
                     placeholder='Enter Age ...'
                     value={age}
-                    onChange={e=>setAge(e.currentTarget.value)}
+                    onChange={e => setAge(e.currentTarget.value)}
                   ></Form.Control>
 
                 </Form.Group>
-                
+
 
                 <Form.Group controlId="gender">
                   <Form.Label>Sex</Form.Label>
-                  <Form.Check 
-                  type="radio"
-                  label="Male"
-                  value = "0"
-                  checked={gender === "0"}
-                  onChange={e => setGender(e.currentTarget.value)}
+                  <Form.Check
+                    type="radio"
+                    label="Male"
+                    value="0"
+                    checked={gender === "0"}
+                    onChange={e => setGender(e.currentTarget.value)}
                   />
 
-                  <Form.Check 
-                  type="radio"
-                  label="Female"
-                  value = "1"
-                  checked={gender === "1"}
-                  onChange={e => setGender(e.currentTarget.value)}
+                  <Form.Check
+                    type="radio"
+                    label="Female"
+                    value="1"
+                    checked={gender === "1"}
+                    onChange={e => setGender(e.currentTarget.value)}
                   />
                 </Form.Group>
 
@@ -119,7 +132,7 @@ const HeartPage = ({ history }) => {
                     type="number"
                     placeholder='Value of 0/1/2/3 ...'
                     value={cp}
-                    onChange={e=>setCP(e.currentTarget.value)}
+                    onChange={e => setCP(e.currentTarget.value)}
                   ></Form.Control>
 
                 </Form.Group>
@@ -130,7 +143,7 @@ const HeartPage = ({ history }) => {
                     type="number"
                     placeholder='Enter BP ...'
                     value={trestbps}
-                    onChange={e=>setTrestbps(e.currentTarget.value)}
+                    onChange={e => setTrestbps(e.currentTarget.value)}
                   ></Form.Control>
 
                 </Form.Group>
@@ -141,7 +154,7 @@ const HeartPage = ({ history }) => {
                     type="number"
                     placeholder='Enter cholestrol ...'
                     value={col}
-                    onChange={e=>setCol(e.currentTarget.value)}
+                    onChange={e => setCol(e.currentTarget.value)}
                   ></Form.Control>
 
                 </Form.Group>
@@ -152,7 +165,7 @@ const HeartPage = ({ history }) => {
                     type="number"
                     placeholder='Enter value ...'
                     value={fbs}
-                    onChange={e=>setFbs(e.currentTarget.value)}
+                    onChange={e => setFbs(e.currentTarget.value)}
                   ></Form.Control>
 
                 </Form.Group>
@@ -163,7 +176,7 @@ const HeartPage = ({ history }) => {
                     type="number"
                     placeholder='valu between 0 to 4 ...'
                     value={ecg}
-                    onChange={e=>setEcg(e.currentTarget.value)}
+                    onChange={e => setEcg(e.currentTarget.value)}
                   ></Form.Control>
 
                 </Form.Group>
@@ -174,39 +187,39 @@ const HeartPage = ({ history }) => {
                     type="number"
                     placeholder='Enter value ...'
                     value={thalach}
-                    onChange={e=>setThalach(e.currentTarget.value)}
+                    onChange={e => setThalach(e.currentTarget.value)}
                   ></Form.Control>
 
                 </Form.Group>
 
                 <Form.Group controlId="exang">
                   <Form.Label>Have you experienced exercise induced angina?</Form.Label>
-                  <Form.Check 
-                  type="radio"
-                  label="No"
-                  value = "0"
-                  checked={exang === "0"}
-                  onChange={e => setExang(e.currentTarget.value)}
+                  <Form.Check
+                    type="radio"
+                    label="No"
+                    value="0"
+                    checked={exang === "0"}
+                    onChange={e => setExang(e.currentTarget.value)}
                   />
 
-                  <Form.Check 
-                  type="radio"
-                  label="Yes"
-                  value = "1"
-                  checked={exang === "1"}
-                  onChange={e => setExang(e.currentTarget.value)}
+                  <Form.Check
+                    type="radio"
+                    label="Yes"
+                    value="1"
+                    checked={exang === "1"}
+                    onChange={e => setExang(e.currentTarget.value)}
                   />
 
                 </Form.Group>
-                
-                
+
+
                 <Form.Group controlId="oldpeak">
                   <Form.Label>Enter ST depression induced by exercise relative to rest </Form.Label>
                   <Form.Control
                     type="number"
                     placeholder='Enter value ...'
                     value={oldpeak}
-                    onChange={e=>setOldpeak(e.currentTarget.value)}
+                    onChange={e => setOldpeak(e.currentTarget.value)}
                   ></Form.Control>
 
                 </Form.Group>
@@ -217,43 +230,17 @@ const HeartPage = ({ history }) => {
                     type="number"
                     placeholder='Enter value ...'
                     value={thal}
-                    onChange={e=>setThal(e.currentTarget.value)}
+                    onChange={e => setThal(e.currentTarget.value)}
                   ></Form.Control>
 
                 </Form.Group>
 
-                
-                <Button type='button' 
-                variant='success'
-                onClick = {()=>{
-                  let query = "?"
-                  query = query+"q1="+age+"&"
-                  query = query+"q2="+gender+"&"
-                  query = query+"q3="+cp+"&"
-                  query = query+"q4="+trestbps+"&"
-                  query = query+"q5="+col+"&"
-                  query = query+"q6="+fbs+"&"
-                  query = query+"q7="+ecg+"&"
-                  query = query+"q8="+thalach+"&"
-                  query = query+"q9="+exang+"&"
-                  query = query+"q10="+oldpeak+"&"
-                  query = query+"q11="+thal
-                  let apicall = 'https://hacknsut21api.herokuapp.com/heart/'
-                  apicall = apicall + query
-                  console.log(apicall)
 
-                }}
+                <Button type='button'
+                  variant='success'
+                  onClick={submitHandler}
                 >Detect</Button>
               </Form>
-
-              <Row className='py-3'>
-                <Col>
-                  New Customer?{' '}
-                  <Link to={'/registerchoice'}>
-                    Register
-        </Link>
-                </Col>
-              </Row>
             </FormContainer>
           </div>
           <Footer />
