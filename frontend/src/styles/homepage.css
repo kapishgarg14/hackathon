@@ -25,3 +25,12 @@
 .homepageCard .desc{
   height: 70px;
 }
+
+
+.homepageDoctorCard{
+  text-align: center;
+}
+
+.doctorsCarousel{
+  width: 100%;
+}

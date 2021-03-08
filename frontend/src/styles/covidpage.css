@@ -1,0 +1,14 @@
+.covidImg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.9;
+  height: 50vh;
+  width: 99vw;
+  z-index: -2;
+}
+
+.titleHeading{
+  text-align: center;
+  color: black;
+}

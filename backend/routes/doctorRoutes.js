@@ -4,7 +4,7 @@ const router = express.Router()
 const Doctor = require('../models/doctorModel')
 const bcrypt = require('bcryptjs')
 const generateToken = require('../utils/generateToken')
-//const protectUser = require('../middlewares/authMiddleware')
+const { protectDoctor } = require('../middlewares/authMiddleware')
 
 
 //admin middleware 
@@ -63,12 +63,12 @@ const generateToken = require('../utils/generateToken')
 
 
 
-//get all users
-//private
-// router.get('/', protect, admin, asyncHandler(async (req, res) => {
-//   const users = await User.find({})
-//   res.json(users)
-// }))
+//get all doctors
+//public
+router.get('/', asyncHandler(async (req, res) => {
+  const doctors = await Doctor.find({})
+  res.json(doctors)
+}))
 
 
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/navbar.css'
+import { Link } from 'react-router-dom'
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
@@ -42,16 +43,42 @@ const TopNav = () => {
           <LinkContainer to='/covid'>
             <Nav.Link>COVID-19</Nav.Link>
           </LinkContainer>
-          <LinkContainer to='/bloodTest'>
+          <LinkContainer to='/testing'>
             <Nav.Link >Blood Tests</Nav.Link>
           </LinkContainer>
           <NavDropdown title="Services" id="collasible-nav-dropdown">
-            <NavDropdown.Item >Covid Test</NavDropdown.Item>
-            <NavDropdown.Item >Covid Detection</NavDropdown.Item>
-            <NavDropdown.Item >Heart Disease Detection</NavDropdown.Item>
-            <NavDropdown.Item >Doctors Near Me</NavDropdown.Item>
-            <NavDropdown.Item >Book an Appointment</NavDropdown.Item>
+            <NavDropdown.Item >
+              <LinkContainer to='/appointment'>
+                <Nav.Link>Book an Appointment</Nav.Link>
+              </LinkContainer>
+            </NavDropdown.Item>
+            <NavDropdown.Item >
+              <LinkContainer to='/testing'>
+                <Nav.Link>Book a Test</Nav.Link>
+              </LinkContainer>
+            </NavDropdown.Item>
+            <NavDropdown.Item >
+              <LinkContainer to='/heartprediction'>
+                <Nav.Link>Heart Disease Detection</Nav.Link>
+              </LinkContainer>
+            </NavDropdown.Item>
+            <NavDropdown.Item >
+              <LinkContainer to='/covidprediction'>
+                <Nav.Link>Covid Detection</Nav.Link>
+              </LinkContainer>
+            </NavDropdown.Item>
+            <NavDropdown.Item >
+              <LinkContainer to='/medicine'>
+                <Nav.Link>Find Medicine</Nav.Link>
+              </LinkContainer>
+            </NavDropdown.Item>
+            <NavDropdown.Item >
+              <LinkContainer to='/vaccination'>
+                <Nav.Link>Covid Vaccination</Nav.Link>
+              </LinkContainer>
+            </NavDropdown.Item>
           </NavDropdown>
+
           <LinkContainer to='/about'>
             <Nav.Link >About</Nav.Link>
           </LinkContainer>

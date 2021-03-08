@@ -10,12 +10,15 @@ let userData = localStorage.getItem('userData');
 
 
 
-const UserLoginPage = () => {
+const UserLoginPage = ({ history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
 
 
+  // function redirect() {
+  //   window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
+  // }
 
 
   const loginUser = async (email, password) => {
@@ -28,10 +31,9 @@ const UserLoginPage = () => {
       }
       const { data } = await axios.post('/api/users/login', { email, password }, config)
       console.log(data)
-      localStorage.setItem('userData', JSON.stringify(data))
-
-      window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
-
+      await localStorage.setItem('userData', JSON.stringify(data))
+      history.push('/')
+      //await redirect()
 
     } catch (err) {
       console.error(err)

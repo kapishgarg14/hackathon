@@ -10,7 +10,7 @@ let doctorData = localStorage.getItem('doctorData');
 
 
 
-const DoctorLoginPage = () => {
+const DoctorLoginPage = ({ history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -30,8 +30,8 @@ const DoctorLoginPage = () => {
       const { data } = await axios.post('/api/doctors/login', { email, password }, config)
       console.log(data)
       localStorage.setItem('doctorData', JSON.stringify(data))
-
-      window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
+      history.push('/')
+      //window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
 
 
     } catch (err) {
