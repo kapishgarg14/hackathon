@@ -19,7 +19,7 @@ const Register = ({ history }) => {
 
 
 
-  const registerUser = async (name, age, contact_number, gender, address, email, password) => {
+  const registerUser = async (name, age, contactNumber, gender, address, email, password) => {
     try {
 
       const config = {
@@ -27,10 +27,9 @@ const Register = ({ history }) => {
           'Content-Type': 'application/json'
         }
       }
-      const { data } = await axios.post('/api/users', { name, age, contact_number, gender, address, email, password }, config)
+      const { data } = await axios.post('/api/users', { name, age, contactNumber, gender, address, email, password }, config)
       console.log(data)
-      localStorage.setItem('userInfo', JSON.stringify(data))
-      history.push('/')
+      history.push('/loginchoice')
 
     } catch (err) {
       console.error(err)
@@ -40,15 +39,7 @@ const Register = ({ history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    setValidated(true);
-
-    //registration api
-
+   
     if (password === confirmPassword) {
       registerUser(name, age, contactNumber, gender, address, email, password)
     }
@@ -103,6 +94,22 @@ const Register = ({ history }) => {
               Please provide a valid age.
             </Form.Control.Feedback>
           </Form.Group>
+
+
+          <Form.Group controlId="gender">
+            <Form.Label>Gender</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="Gender"
+              value={gender}
+              onChange={e => setGender(e.target.value)}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide a valid Name.
+            </Form.Control.Feedback>
+          </Form.Group>
+
 
 
           <Form.Group controlId="contact">

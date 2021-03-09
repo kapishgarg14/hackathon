@@ -3,17 +3,27 @@ import { Link } from 'react-router-dom'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import '../styles/register.css'
 import FormContainer from '../components/FormContainer'
+import axios from 'axios'
 
 const Register = ({ location, history }) => {
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [confirmPassword, setConfirmPassword] = useState('')
-  // const [name, setName] = useState('')
+
+
+  const [name, setName] = useState('')
+  const [age, setAge] = useState(0)
+  const [gender, setGender] = useState('')
+  const [address, setAddress] = useState('')
+  const [contactNumber, setContactNumber] = useState(0)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [speciality, setSpeciality] = useState('')
+  const [paymentMethod, setPaymentMethod] = useState('')
+  const [fees, setFees] = useState('')
   const [validated, setValidated] = useState(false);
 
 
-  const redirect = location.search ? location.search.split('=') : '/'
-  console.group(redirect)
+  // const redirect = location.search ? location.search.split('=') : '/'
+  // console.group(redirect)
   // useEffect(() => {
   //   if (userInfo) {
   //     history.push(redirect)
@@ -21,26 +31,29 @@ const Register = ({ location, history }) => {
   // }, [history, userInfo, redirect])
 
 
+  const registerDoctor = async (name, age, address, gender, contactNumber, email, password,speciality,paymentMethod, fees) => {
+    try {
 
-  const submitHandler = (data, event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      const { data } = await axios.post('/api/doctors', { name, age, address, gender, contactNumber, email, password,speciality,paymentMethod, fees }, config)
+      console.log(data)
+      history.push('/registerchoice')
+
+    } catch (err) {
+      console.error(err)
     }
-    setValidated(true);
-
-    //registration api
-    event.preventDefault()
-
-    // if (password === confirmPassword) {
-
-    // }
-    console.log(data)
+  }
 
 
-
-
+  const submitHandler = (e,data) => {
+    e.preventDefault()
+    if (password === confirmPassword) {
+      registerDoctor(name, age, address, gender, contactNumber, email, password,speciality,paymentMethod, fees)
+    }
 
   };
 
@@ -56,6 +69,8 @@ const Register = ({ location, history }) => {
               required
               type="text"
               placeholder="Name"
+              value={name}
+              onChange={e => setName(e.target.value)}
             />
             <Form.Control.Feedback type="invalid">
               Please provide a valid Name.
@@ -68,6 +83,8 @@ const Register = ({ location, history }) => {
             <Form.Control
               required
               type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
             <Form.Control.Feedback type="invalid">
               Please provide a valid email.
@@ -80,11 +97,28 @@ const Register = ({ location, history }) => {
             <Form.Control
               required
               type="number"
+              value={age}
+              onChange={e => setAge(e.target.value)}
             />
             <Form.Control.Feedback type="invalid">
               Please provide a valid age.
             </Form.Control.Feedback>
           </Form.Group>
+
+          <Form.Group controlId="gender">
+            <Form.Label>Gender</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="Gender"
+              value={gender}
+              onChange={e => setGender(e.target.value)}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide a valid Name.
+            </Form.Control.Feedback>
+          </Form.Group>
+
 
 
           <Form.Group controlId="contact">
@@ -92,6 +126,8 @@ const Register = ({ location, history }) => {
             <Form.Control
               required
               type="number"
+              value={contactNumber}
+              onChange={e => setContactNumber(e.target.value)}
             />
             <Form.Control.Feedback type="invalid">
               Please provide a valid contact number.
@@ -101,7 +137,53 @@ const Register = ({ location, history }) => {
 
           <Form.Group controlId="address">
             <Form.Label>Address</Form.Label>
-            <Form.Control type="text" placeholder="Address" required />
+            <Form.Control type="text"
+            value={address}
+              onChange={e => setAddress(e.target.value)} 
+             placeholder="Address" required />
+          </Form.Group>
+
+
+          <Form.Group controlId="speciality">
+            <Form.Label>Specialty</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="Speciality"
+              value={speciality}
+              onChange={e => setSpeciality(e.target.value)}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide a valid speciality.
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group controlId="fees">
+            <Form.Label>Fees</Form.Label>
+            <Form.Control
+              required
+              type="number"
+              placeholder="fees"
+              value={fees}
+              onChange={e => setFees(e.target.value)}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide a fee value.
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group controlId="payment">
+            <Form.Label>paymentMethod</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="Payment"
+              value={paymentMethod}
+              onChange={e => setPaymentMethod(e.target.value)}
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide a valid Name.
+            </Form.Control.Feedback>
           </Form.Group>
 
 
@@ -111,6 +193,8 @@ const Register = ({ location, history }) => {
             <Form.Control
               required
               type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
@@ -121,9 +205,12 @@ const Register = ({ location, history }) => {
             <Form.Control
               required
               type="password"
+              value={confirmPassword}
+              onChange={e => setConfirmPassword(e.target.value)}
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
+          
 
           <Form.Group>
             <Form.Check

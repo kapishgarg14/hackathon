@@ -20,6 +20,50 @@ const { protectDoctor } = require('../middlewares/authMiddleware')
 // }
 
 
+//to register a new doctor
+//public
+router.post('/', asyncHandler(async (req, res) => {
+  console.log('request aayi bc')
+  const { name, age, address, gender, contactNumber, email, password,speciality,paymentMethod, fees } = req.body
+
+  const doctorExists = await Doctor.findOne({ email })
+
+  if (doctorExists) {
+    res.status(400)
+    throw new Error('User exists')
+  }
+
+  const doctor = await Doctor.create({
+    name: name,
+    age: age,
+    address: address,
+    contact_number: contactNumber,
+    email: email,
+    password: bcrypt.hashSync(password, 10),
+    speciality: speciality,
+    fees: fees,
+    paymentMethod: paymentMethod
+  })
+
+  if (doctor) {
+    res.status(201).json({
+      _id: doctor._id,
+      name: doctor.name,
+      age: doctor.age,
+      address: doctor.address,
+      contact_number: doctor.contact_number,
+      email: doctor.email,
+      token: generateToken(doctor._id)
+    })
+  } else {
+    res.status(400)
+    throw new Error('User not found!!')
+  }
+
+}))
+
+
+
 
 // to register a new user
 //public

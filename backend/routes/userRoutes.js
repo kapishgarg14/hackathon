@@ -24,8 +24,11 @@ const { protectUser } = require('../middlewares/authMiddleware')
 // to register a new user
 //public
 router.post('/', asyncHandler(async (req, res) => {
-  const { name, age, gender, address, contact_number, email, password } = req.body
 
+  console.log(req.body)
+  const { name, age, contactNumber, gender, address,  email, password } = req.body
+  console.log(name)
+  console.log(contactNumber);
   const userExists = await User.findOne({ email })
 
   if (userExists) {
@@ -34,13 +37,13 @@ router.post('/', asyncHandler(async (req, res) => {
   }
 
   const user = await User.create({
-    name,
-    age,
-    gender,
-    address,
-    contact_number,
-    email,
-    password
+    name : name,
+    age : age,
+    gender :gender,
+    address : address,
+    contact_number : contactNumber,
+    email : email,
+    password : bcrypt.hashSync(password, 10)
   })
 
   if (user) {
