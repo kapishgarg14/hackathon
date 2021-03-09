@@ -88,6 +88,7 @@ router.post('/login', asyncHandler(async (req, res) => {
       address: doctor.address,
       contact_number: doctor.contact_number,
       email: doctor.email,
+      type: 'doctor',
       token: generateToken(doctor._id)
     })
   } else {

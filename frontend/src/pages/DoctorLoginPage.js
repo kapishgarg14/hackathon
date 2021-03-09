@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { useRecoilState } from "recoil";
+import { userAtom, tokenAtom } from "../global/globalState";
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import FormContainer from '../components/FormContainer'
 import '../styles/login.css'
@@ -13,6 +15,8 @@ let doctorData = localStorage.getItem('doctorData');
 const DoctorLoginPage = ({ history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [, setUser] = useRecoilState(userAtom);
+  const [, setToken] = useRecoilState(tokenAtom);
 
 
 
@@ -29,8 +33,10 @@ const DoctorLoginPage = ({ history }) => {
       }
       const { data } = await axios.post('/api/doctors/login', { email, password }, config)
       console.log(data)
-      localStorage.setItem('doctorData', JSON.stringify(data))
-      history.push('/')
+      localStorage.setItem('user', JSON.stringify(data))
+      localStorage.setItem('token', JSON.stringify(data.token))
+      localStorage.setItem('type', 'Doctor')
+      history.push('/dashboardDoc')
       //window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
 
 

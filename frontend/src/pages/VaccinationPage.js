@@ -12,7 +12,7 @@ let userData = localStorage.getItem('userData');
 let doctorData = localStorage.getItem('doctorData');
 
 
-const CovidPage = () => {
+const VaccinationPage = () => {
 
   const [doctors, setDoctors] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -50,11 +50,12 @@ const CovidPage = () => {
       {loading ? <Loader /> : (
         <>
           <TopNav />
-          <div className='p-0 content'>
+
+          <div className='p-0'>
 
             <img src='https://cdn.buttercms.com/5hvuIprQSW28dpjJrp0I' alt='default' className='covidImg' />
             <h1 className='titleHeading'> Covid - 19</h1>
-            <Container style={{ marginTop: '24vh' }}>
+            <Container style={{ marginTop: '20vh' }}>
               <div>
                 <Row className='pb-5'>
                   <Col sm={6}>
@@ -231,4 +232,4 @@ const CovidPage = () => {
   )
 }
 
-export default CovidPage
+export default VaccinationPage

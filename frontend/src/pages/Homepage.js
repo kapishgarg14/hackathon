@@ -3,8 +3,8 @@ import axios from 'axios'
 import '../styles/homepage.css'
 import { Button, Container, Row, Col, Carousel } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import TopNav from '../components/TopNav'
 import Footer from '../components/Footer'
+import TopNav from '../components/TopNav'
 import HomepageCard from '../components/HomepageCard'
 import Loader from '../components/Loader'
 
@@ -67,9 +67,9 @@ const Homepage = ({ location, history }) => {
 
   return (
     <>
+      <TopNav />
       {loading ? <Loader /> : (
         <>
-          <TopNav data={userData} type={type} />
 
           <div className='p-0'>
 
