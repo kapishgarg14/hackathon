@@ -1,43 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../styles/homepage.css'
+import { useRecoilValue, useRecoilState } from "recoil";
+import { userAtom, tokenAtom } from "../global/globalState";
 import { Button, Container, Row, Col, Carousel } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import TopNav from '../components/TopNav'
 import Footer from '../components/Footer'
+import TopNav from '../components/TopNav'
 import HomepageCard from '../components/HomepageCard'
 import Loader from '../components/Loader'
 
 
-let userData = localStorage.getItem('userData');
-let doctorData = localStorage.getItem('doctorData');
-let type = 1;
 
 
-const Homepage = ({ location, history }) => {
+const Homepage = ({ history }) => {
+  const token = useRecoilValue(tokenAtom);
+  const [user, setUser] = useRecoilState(userAtom);
 
   const [doctors, setDoctors] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  const redirect = location.search ? location.search.split('=') : '/'
 
 
 
   useEffect(() => {
-    userData = localStorage.getItem('userData');
-    doctorData = localStorage.getItem('doctorData');
-    console.log(userData)
-    if (userData) {
-      type = 1;
-      console.log('hello')
-      history.push(redirect)
-    }
-    else {
-      type = 0;
-      console.log('hello')
-      history.push(redirect)
-
-    }
     async function getDoctors() {
       try {
 
@@ -50,10 +36,7 @@ const Homepage = ({ location, history }) => {
         console.log(data)
         setDoctors(data)
         setLoading(false)
-        // userData = localStorage.getItem('userData');
-        // doctorData = localStorage.getItem('doctorData');
-        // localStorage.setItem('userData', userData)
-        // localStorage.setItem('doctorData', doctorData)
+        console.log(user)
 
       } catch (err) {
         console.error(err)
@@ -61,21 +44,28 @@ const Homepage = ({ location, history }) => {
     }
 
     getDoctors()
-  }, [history, redirect])
+  }, [])
 
 
 
   return (
     <>
+      <TopNav />
       {loading ? <Loader /> : (
         <>
-          <TopNav data={userData} type={type} />
 
           <div className='p-0'>
 
             <img src='/images/homepage.jpg' alt='default' className='homepageImg' />
             <LinkContainer to='/appointment'>
-              <Button variant="outline-warning" size="lg" className='AppointmentBtn'>
+              <Button variant="outline-warning" size="lg" className='AppointmentBtn' onClick={() => {
+                console.log(user)
+                if (user === null) {
+                  history.push('/loginchoice')
+                } else {
+                  history.push('/appointment')
+                }
+              }}>
                 Make an Appointment
         </Button>
             </LinkContainer>
@@ -101,20 +91,10 @@ const Homepage = ({ location, history }) => {
                       title='Heart Disease'
                       description='dxgcfvugyihfrgnejtk fshubhinj' />
                   </Col>
-                  <Col>
-                    <HomepageCard
-                      img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-2-3.png'
-                      title='Urgent Care'
-                      description='dxgcfvhudefrgbjnkdcndbhinj' />
-                  </Col>
+
                 </Row>
                 <Row className='pb-5'>
-                  <Col>
-                    <HomepageCard
-                      img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-12-3.png'
-                      title='Home Test'
-                      description='dxgcfvhgvudcivubvcdnasbj dcubhinj' />
-                  </Col>
+
                   <Col>
                     <HomepageCard
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-14-3.png'

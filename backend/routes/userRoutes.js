@@ -5,7 +5,7 @@ const User = require('../models/userModel')
 const bcrypt = require('bcryptjs')
 const generateToken = require('../utils/generateToken')
 const { protectUser } = require('../middlewares/authMiddleware')
-
+const Doctor = require('../models/doctorModel')
 
 //admin middleware 
 // const admin = (req, res, next) => {
@@ -24,8 +24,11 @@ const { protectUser } = require('../middlewares/authMiddleware')
 // to register a new user
 //public
 router.post('/', asyncHandler(async (req, res) => {
-  const { name, age, gender, address, contact_number, email, password } = req.body
 
+  console.log(req.body)
+  const { name, age, contactNumber, gender, address, email, password } = req.body
+  console.log(name)
+  console.log(contactNumber);
   const userExists = await User.findOne({ email })
 
   if (userExists) {
@@ -34,13 +37,13 @@ router.post('/', asyncHandler(async (req, res) => {
   }
 
   const user = await User.create({
-    name,
-    age,
-    gender,
-    address,
-    contact_number,
-    email,
-    password
+    name: name,
+    age: age,
+    gender: gender,
+    address: address,
+    contact_number: contactNumber,
+    email: email,
+    password: bcrypt.hashSync(password, 10)
   })
 
   if (user) {
@@ -52,6 +55,7 @@ router.post('/', asyncHandler(async (req, res) => {
       address: user.address,
       contact_number: user.contact_number,
       email: user.email,
+      type: 'user',
       token: generateToken(user._id)
     })
   } else {
@@ -96,6 +100,50 @@ router.post('/login', asyncHandler(async (req, res) => {
     throw new Error('Invalid email or password')
   }
 }))
+
+
+//book an appintment for user
+//private
+router.post('/bookAppointment', asyncHandler(async (req, res) => {
+  console.log(req.body);
+  const { symptoms, appointmentDate, department, doctor, userId } = req.body;
+
+  const user = await User.findById(userId);
+
+  console.log(userId)
+
+  user.appointment = {
+    symptoms,
+    appointmentDate: new Date(appointmentDate),
+    department,
+    doctor,
+  };
+  console.log("User : ", user);
+
+  await user.save();
+
+  const appointedDoc = await Doctor.findOne({ name: req.body.doctor });
+
+  appointedDoc.appointments.push({
+    user: userId,
+    ...req.body
+  })
+
+  await appointedDoc.save();
+
+  res.json(user)
+
+}))
+
+
+router.get('/getPrescriptions', asyncHandler(async (req, res) => {
+  console.log(req.query.id)
+  const user = await User.findById(req.query.id);
+  res.json(user);
+
+}))
+
+
 
 
 // to get a logged in user.

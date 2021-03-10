@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { useRecoilState } from "recoil";
+import { userAtom, tokenAtom } from "../global/globalState";
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import FormContainer from '../components/FormContainer'
 import '../styles/login.css'
 
-let userData = localStorage.getItem('userData');
 
 
 
@@ -13,6 +14,8 @@ let userData = localStorage.getItem('userData');
 const UserLoginPage = ({ history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [, setUser] = useRecoilState(userAtom);
+  const [, setToken] = useRecoilState(tokenAtom);
 
 
 
@@ -31,7 +34,9 @@ const UserLoginPage = ({ history }) => {
       }
       const { data } = await axios.post('/api/users/login', { email, password }, config)
       console.log(data)
-      await localStorage.setItem('userData', JSON.stringify(data))
+      await localStorage.setItem('user', JSON.stringify(data))
+      await localStorage.setItem('token', JSON.stringify(data.token))
+      await localStorage.setItem('type', 'User')
       history.push('/')
       //await redirect()
 

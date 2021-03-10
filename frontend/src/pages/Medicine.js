@@ -15,20 +15,20 @@ let doctorData = localStorage.getItem("doctorData");
 console.log(userData);
 console.log(doctorData);
 
-const getMedicine= ({ history }) => {
+const GetMedicine = ({ history }) => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const checkCovid = async (name
-  ) => {
+  const checkCovid = async (name) => {
     try {
       const config = {
         headers: {
           "Content-Type": "application/json",
         }
       };
+      console.log(name)
       const { data } = await axios.get(
-        "https://hacknsut21api.herokuapp.com/medicine?medicine_name="+name,
+        "https://hacknsut21api.herokuapp.com/medicine?medicine_name=" + name,
         config
       );
       console.log(data);
@@ -50,9 +50,7 @@ const getMedicine= ({ history }) => {
     }
 
     //login api
-    checkCovid(
-      name
-    );
+    checkCovid(name);
   };
 
   return (
@@ -60,35 +58,35 @@ const getMedicine= ({ history }) => {
       {loading ? (
         <Loader />
       ) : (
-        <>
-          <TopNav />
+          <>
+            <TopNav />
 
-          <div className="p-0">
-            <FormContainer>
-              <h1>Find Medicines </h1>
-              <Form onSubmit={submitHandler}>
-                <Form.Group controlId="age">
-                  <Form.Label>Medicine Name</Form.Label>
-                  <Form.Control
-                    type="number"
-                    placeholder="Enter Medicine Name ..."
-                    value={name}
-                    onChange={(e) => setName(e.currentTarget.value)}
-                  ></Form.Control>
-                </Form.Group>
+            <div className="p-0">
+              <FormContainer>
+                <h1>Find Medicines </h1>
+                <Form onSubmit={submitHandler}>
+                  <Form.Group controlId="age">
+                    <Form.Label>Medicine Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter Medicine Name ..."
+                      value={name}
+                      onChange={(e) => setName(e.currentTarget.value)}
+                    ></Form.Control>
+                  </Form.Group>
 
-                
-                <Button type="button" variant="success" onClick={submitHandler}>
-                  Detect
+
+                  <Button type="button" variant="success" onClick={submitHandler}>
+                    Detect
                 </Button>
-              </Form>
-            </FormContainer>
-          </div>
-          <Footer />
-        </>
-      )}
+                </Form>
+              </FormContainer>
+            </div>
+            <Footer />
+          </>
+        )}
     </>
   );
 };
 
-export default getMedicine;
+export default GetMedicine;

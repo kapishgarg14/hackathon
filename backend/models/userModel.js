@@ -41,7 +41,7 @@ const userSchema = mongoose.Schema({
     appointmentDate: {
       type: Date
     },
-    department: {
+    speciality: {
       type: String
     },
     doctor: {
@@ -69,12 +69,12 @@ const userSchema = mongoose.Schema({
 
 
 userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) {
-    next()
-  }
+  // if (!this.isModified('password')) {
+  //   next()
+  // }
 
-  const salt = await bcrypt.genSalt(10)
-  this.password = await bcrypt.hash(this.password, salt)
+  // const salt = await bcrypt.genSalt(10)
+  // this.password = await bcrypt.hash(this.password, salt)
 })
 
 

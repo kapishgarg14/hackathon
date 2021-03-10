@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import '../styles/covidpage.css'
-import { Button, Row, Col, Form } from 'react-bootstrap'
+import { Button, Row, Col, Form, Container } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import TopNav from '../components/TopNav'
 import Footer from '../components/Footer'
@@ -10,13 +10,6 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 
 
-
-let userData = localStorage.getItem('userData');
-let doctorData = localStorage.getItem('doctorData');
-
-
-console.log(userData)
-console.log(doctorData)
 
 const CovidPage = ({ history }) => {
 
@@ -41,6 +34,7 @@ const CovidPage = ({ history }) => {
   const [appetite, setAppetite] = useState(null)
   const [smell, setSmell] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [result, setResult] = useState(null)
 
   const checkCovid = async (age, gender, temp, cough, throat, weakness, breathing, drowsiness, chest, travel, diabetes, heart, lung, stroke, symptoms, BP, kidney, appetite, smell) => {
     try {
@@ -73,6 +67,7 @@ const CovidPage = ({ history }) => {
       }
       const { data } = await axios.get('https://hacknsut21api.herokuapp.com/covid/', config)
       console.log(data)
+      setResult(data)
 
       //localStorage.setItem('doctorData', JSON.stringify(data))
       //history.push('/')
@@ -464,13 +459,43 @@ const CovidPage = ({ history }) => {
                     onChange={e => setSmell(e.currentTarget.value)}
                   />
                 </Form.Group>
-                <Button type='button'
-                  variant='success'
-                  onClick={submitHandler}
-                >Detect</Button>
+                <div className='text-center'>
+                  <Button type='button'
+                    variant='success'
+                    block
+                    onClick={submitHandler}
+                  >Detect</Button>
+                </div>
               </Form>
 
             </FormContainer>
+
+            {
+              result === null ? (
+                <>
+                </>
+              ) : (
+                  <>
+                    {
+                      result === 1 ? (
+                        <Container className='text-center my-5'>
+                          <h3 variant='danger' className='mb-4' style={{ fontWeight: 'bolder', color: 'red' }}>
+                            You might be infected with CoronaVirus.
+                          </h3>
+                          <Button variant='warning'>Book a Test</Button>
+                        </Container>
+                      ) : (
+                          <Container className='text-center my-5'>
+                            <h3 variant='success' className='mb-4' style={{ fontWeight: 'bolder', color: 'green' }}>You don't seem to be positive for Covid-19</h3>
+                            <h4>Take Precautions and Stay Safe !!</h4>
+                          </Container>
+                        )
+                    }
+                  </>
+                )
+            }
+
+
           </div>
           <Footer />
         </>

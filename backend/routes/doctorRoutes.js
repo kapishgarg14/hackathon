@@ -5,7 +5,7 @@ const Doctor = require('../models/doctorModel')
 const bcrypt = require('bcryptjs')
 const generateToken = require('../utils/generateToken')
 const { protectDoctor } = require('../middlewares/authMiddleware')
-
+const User = require('../models/userModel')
 
 //admin middleware 
 // const admin = (req, res, next) => {
@@ -18,6 +18,50 @@ const { protectDoctor } = require('../middlewares/authMiddleware')
 //     throw new Error('Not an admin')
 //   }
 // }
+
+
+//to register a new doctor
+//public
+router.post('/', asyncHandler(async (req, res) => {
+  console.log('request aayi bc')
+  const { name, age, address, gender, contactNumber, email, password, speciality, paymentMethod, fees } = req.body
+
+  const doctorExists = await Doctor.findOne({ email })
+
+  if (doctorExists) {
+    res.status(400)
+    throw new Error('User exists')
+  }
+
+  const doctor = await Doctor.create({
+    name: name,
+    age: age,
+    address: address,
+    contact_number: contactNumber,
+    email: email,
+    password: bcrypt.hashSync(password, 10),
+    speciality: speciality,
+    fees: fees,
+    paymentMethod: paymentMethod
+  })
+
+  if (doctor) {
+    res.status(201).json({
+      _id: doctor._id,
+      name: doctor.name,
+      age: doctor.age,
+      address: doctor.address,
+      contact_number: doctor.contact_number,
+      email: doctor.email,
+      token: generateToken(doctor._id)
+    })
+  } else {
+    res.status(400)
+    throw new Error('User not found!!')
+  }
+
+}))
+
 
 
 
@@ -88,6 +132,7 @@ router.post('/login', asyncHandler(async (req, res) => {
       address: doctor.address,
       contact_number: doctor.contact_number,
       email: doctor.email,
+      type: 'doctor',
       token: generateToken(doctor._id)
     })
   } else {
@@ -96,6 +141,52 @@ router.post('/login', asyncHandler(async (req, res) => {
     throw new Error('Invalid email or password')
   }
 }))
+
+
+//upcoming appointments for doctor
+//private
+router.get('/upcomingAppointments', asyncHandler(async (req, res) => {
+  const doctor = await Doctor.findById(req.query.id)
+  res.json(doctor);
+}))
+
+
+router.post('/givePrescription', asyncHandler(async (req, res) => {
+  const { userId, objID, symptoms, medicine, comments } = req.body;
+  const user = await User.findById(userId);
+
+  user.appointment.prescription = {
+    symptoms,
+    medicine,
+    comments,
+    date: Date.now()
+  }
+
+  await user.save();
+
+  Doctor.updateOne(
+    { "appointments._id": objID },
+    {
+      $set: {
+        "appointments.$.prescription": {
+          symptoms,
+          medicine,
+          comments,
+          date: Date.now()
+        }
+      }
+    },
+    function (err, model) {
+      if (err) {
+        console.error(err);
+        return res.send(err);
+      }
+      return res.json(model)
+    }
+  )
+
+}))
+
 
 
 // to get a logged in user.
