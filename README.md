@@ -78,9 +78,9 @@
 
 A web application for easy interaction between patient and doctors .During the covid pandemic many patients want to interact with the doctors but are not going outside seems risky so they avoid it .
 
-So we made this application that allow patients and doctor to register themselves and interact abd schedule appointments with each other 
+So we made this application that allows patients and doctors to register themselves and interact as well as allowing patients to set up appointment with doctors.
 
-A lot of users feel something is wrong with their body but they do not get it diagnosited to due to social stigma so have feature that predict heart risk failure and covid test using basic symptoms and body parameters that can be easily calculated at home and according to the result they could decide whether it is necessary to go to a doctor or not.
+A lot of users feel something is wrong with their body but they do not get it diagnosited to due to social stigma so we have employed a feature that can determine the likelihood of diseases like Heart failure and Sars-Covid19 using basic symptoms and body parameters that can be easily calculated at home and according to the result they could decide whether it is necessary to go to a doctor or not.
 
 ### Aim of the project
 
@@ -121,6 +121,22 @@ MERN application that is express js for the backend react for frontend part and 
 * [React-Bootstrap](https://react-bootstrap.github.io/)
 * [ExpressJs](http://expressjs.com/)
 * [MongoDB](https://www.mongodb.com/)
+
+### Machine Learning Models
+
+The machine learning models were trained in [python](https://www.python.org/) using scikit-learn library.
+The dataset for Covid prediction was taken from this [Kaggle spreadsheet](https://www.kaggle.com/bitsofishan/covid19-patient-symptoms) while the dataset for heart disease prediction was from the [UCI dataset](https://www.kaggle.com/ronitf/heart-disease-uci) also  hosted on Kaggle.
+The Covid model uses a multinomial Naive bayes algorithm while the heart disease prediction model uses a support vector machine whose hyper-parameters have been tuned using grid-search over the rbf kernel.
+
+* [Scikit-Learn](https://react-bootstrap.github.io/)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+
+### Data fetching
+
+The data for nearby hospitals and vaccine centers is fetched by running queries on the here API. The alternate medicine name and price fetching is done using beautiful soup  scraper on python
+* [Here](https://developer.here.com/)
+* [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
+
 
 
 <!-- GETTING STARTED -->
