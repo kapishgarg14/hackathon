@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import '../styles/covidpage.css'
-import { Button, Row, Col, Form } from 'react-bootstrap'
+import { Button, Row, Col, Form, Container } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import TopNav from '../components/TopNav'
 import Footer from '../components/Footer'
@@ -32,6 +32,8 @@ const HeartPage = ({ history }) => {
   const [exang, setExang] = useState(null)
   const [oldpeak, setOldpeak] = useState(null)
   const [thal, setThal] = useState(null)
+  const [result, setResult] = useState(null)
+
 
   const [loading, setLoading] = useState(false)
 
@@ -58,6 +60,7 @@ const HeartPage = ({ history }) => {
       }
       const data = await axios.post('https://hacknsut21api.herokuapp.com/heart/', config)
       console.log(data)
+      setResult(data)
       // localStorage.setItem('doctorData', JSON.stringify(data))
       // history.push('/')
       //window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
@@ -242,6 +245,30 @@ const HeartPage = ({ history }) => {
                 >Detect</Button>
               </Form>
             </FormContainer>
+            {
+              result === null ? (
+                <>
+                </>
+              ) : (
+                  <>
+                    {
+                      result === 1 ? (
+                        <Container className='text-center my-5'>
+                          <h3 variant='danger' className='mb-4' style={{ fontWeight: 'bolder', color: 'red' }}>
+                            You might be infected with CoronaVirus.
+                          </h3>
+                          <Button variant='warning'>Book a Test</Button>
+                        </Container>
+                      ) : (
+                          <Container className='text-center my-5'>
+                            <h3 variant='success' className='mb-4' style={{ fontWeight: 'bolder', color: 'green' }}>You don't seem to be positive for Covid-19</h3>
+                            <h4>Take Precautions and Stay Safe !!</h4>
+                          </Container>
+                        )
+                    }
+                  </>
+                )
+            }
           </div>
           <Footer />
         </>

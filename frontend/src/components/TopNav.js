@@ -33,7 +33,7 @@ const TopNav = ({ history }) => {
 
   };
 
-  console.log(type, user)
+  //console.log(type, user)
 
   return (
     <Navbar collapseOnSelect sticky='top' expand="lg" bg="primary" variant="dark" className='customNavbar py-3 px-5'>

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import CovidPage from "./pages/CovidPage";
 import DashboardDoc from './pages/DashboardDoc'
+import DashboardUser from './pages/DashboardUser'
 import CovidPrediction from "./pages/CovidPrediction";
 import UserLoginPage from "./pages/UserLoginPage";
 import DoctorLoginPage from "./pages/DoctorLoginPage";
@@ -15,6 +16,7 @@ import RegisterDoctorUserChoicePage from "./pages/RegisterDoctorUserChoicePage";
 import HeartPage from "./pages/HeartPrediction";
 import getMedicine from "./pages/Medicine";
 import AboutUs from "./pages/AboutUs";
+import AppointmentPage from "./pages/AppointmentPage";
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
         <Route exact path="/userregister" component={UserRegister} />
         <Route exact path="/doctorregister" component={DoctorRegister} />
         <Route exact path="/dashboardDoc" component={DashboardDoc} />
+        <Route exact path="/dashboardUser" component={DashboardUser} />
         <Route
           exact
           path="/loginchoice"
@@ -41,6 +44,7 @@ function App() {
         <Route exact path="/covidprediction" component={CovidPrediction} />
         <Route exact path="/medicine" component={getMedicine} />
         <Route exact path="/about" component={AboutUs} />
+        <Route exact path="/appointment" component={AppointmentPage} />
       </Switch>
     </Router>
   );
