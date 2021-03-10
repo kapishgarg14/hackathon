@@ -47,6 +47,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+      <li><a href="#aim-of-the-project">Aim of the project</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -80,6 +81,27 @@ A web application for easy interaction between patient and doctors .During the c
 So we made this application that allow patients and doctor to register themselves and interact abd schedule appointments with each other 
 
 A lot of users feel something is wrong with their body but they do not get it diagnosited to due to social stigma so have feature that predict heart risk failure and covid test using basic symptoms and body parameters that can be easily calculated at home and according to the result they could decide whether it is necessary to go to a doctor or not.
+
+### Aim of the project
+
+The aim of this project is to make interaction between patients and doctors more seamless and convenient . This project offers one stop solution to different problems faced by patients like appointments with doctors , booking a test online and getting a rough idea of their health condition with the help of machine learning i.e Covid Tests,health Condition and also our platform provides service that allows patient to check the alternatives for a medicine and also the prices of different medicines of different brands 
+
+
+
+## What we provide to patients -
+
+📄 Doctor appointment booking
+🔬 Lab test booking
+🧾 Online prescription & medical history database
+💊 Generic drugs to brand name converter & Price Fetcher System 
+🧬 Disease prediction services
+
+
+
+## For doctors, we provide the following services:
+💻 Appointment management system
+✒️ Online prescription creation system
+⚕️ View medical history and previous appointments of patient
 
 
 ### Built With
