@@ -219,9 +219,9 @@ Contributions are what make the open source community such an amazing place to b
 ## Contact
 [Akshat Saraswat](https://github.com/AkshatSaraswat03/hackathon)
 [Ayush Mishra](https://github.com/AYUSHNSUT)
-[Kapish Garg] (https://github.com/kapishgarg14)
+[Kapish Garg](https://github.com/kapishgarg14)
 [Rhythm Nayyer](https://github.com/ryths23)
-[Jai Kumar] (https://github.com/ryths23)
+[Jai Kumar](https://github.com/ryths23)
 
 
 <!-- ACKNOWLEDGEMENTS -->
