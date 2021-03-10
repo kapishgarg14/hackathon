@@ -60,11 +60,13 @@ const AppointmentPage = ({ history }) => {
       }
     }
 
-
-    console.log(user._id)
-    getDoctors()
-    getPrescriptions()
-    console.log(doctors)
+    if (user) {
+      console.log(user._id)
+      getDoctors()
+      getPrescriptions()
+      console.log(doctors)
+    }
+    else { history.push('/loginchoice') }
 
   }, [history]);
 

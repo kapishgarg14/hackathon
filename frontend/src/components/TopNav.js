@@ -101,9 +101,7 @@ const TopNav = ({ history }) => {
                       About
               </div>
 
-                    <div className='navDiv' onClick={() => { }}>
-                      Contact Us
-              </div>
+
                   </>
                 ) : (
                     <>

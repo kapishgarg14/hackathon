@@ -1,0 +1,11 @@
+
+#map {
+  width: 45%;
+  height: 300px;
+  background: grey;
+}
+
+#panel {
+  width: 50%;
+  height: 350px;
+}

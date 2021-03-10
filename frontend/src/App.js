@@ -13,10 +13,12 @@ import DoctorRegister from "./pages/DoctorRegister";
 import PrivateRoute from "./components/PrivateRoute";
 import LoginDoctorUserChoicePage from "./pages/LoginDoctorUserChoicePage";
 import RegisterDoctorUserChoicePage from "./pages/RegisterDoctorUserChoicePage";
-import HeartPage from "./pages/HeartPrediction";
+import HeartPrediction from "./pages/HeartPrediction";
 import getMedicine from "./pages/Medicine";
 import AboutUs from "./pages/AboutUs";
 import AppointmentPage from "./pages/AppointmentPage";
+import VaccinationPage from "./pages/VaccinationPage";
+import TestingPage from "./pages/TestingPage";
 
 function App() {
   return (
@@ -39,12 +41,14 @@ function App() {
           path="/registerchoice"
           component={RegisterDoctorUserChoicePage}
         />
-        <Route exact path="/heartprediction" component={HeartPage} />
+        <Route exact path="/heartprediction" component={HeartPrediction} />
         <Route exact path="/covid" component={CovidPage} />
         <Route exact path="/covidprediction" component={CovidPrediction} />
         <Route exact path="/medicine" component={getMedicine} />
         <Route exact path="/about" component={AboutUs} />
         <Route exact path="/appointment" component={AppointmentPage} />
+        <Route exact path="/vaccination" component={VaccinationPage} />
+        <Route exact path="/testing" component={TestingPage} />
       </Switch>
     </Router>
   );

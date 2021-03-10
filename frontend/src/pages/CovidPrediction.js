@@ -11,13 +11,6 @@ import FormContainer from '../components/FormContainer'
 
 
 
-let userData = localStorage.getItem('userData');
-let doctorData = localStorage.getItem('doctorData');
-
-
-console.log(userData)
-console.log(doctorData)
-
 const CovidPage = ({ history }) => {
 
 
@@ -466,10 +459,13 @@ const CovidPage = ({ history }) => {
                     onChange={e => setSmell(e.currentTarget.value)}
                   />
                 </Form.Group>
-                <Button type='button'
-                  variant='success'
-                  onClick={submitHandler}
-                >Detect</Button>
+                <div className='text-center'>
+                  <Button type='button'
+                    variant='success'
+                    block
+                    onClick={submitHandler}
+                  >Detect</Button>
+                </div>
               </Form>
 
             </FormContainer>

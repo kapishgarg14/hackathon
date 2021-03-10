@@ -10,29 +10,21 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 
 
-
-let userData = localStorage.getItem('userData');
-let doctorData = localStorage.getItem('doctorData');
-
-
-console.log(userData)
-console.log(doctorData)
-
-const HeartPage = ({ history }) => {
+const HeartPrediction = ({ history }) => {
 
 
   const [age, setAge] = useState(18)
   const [gender, setGender] = useState(null);
-  const [cp, setCP] = useState(null)
+  const [cp, setCP] = useState('')
   const [trestbps, setTrestbps] = useState(0)
-  const [col, setCol] = useState(null)
-  const [fbs, setFbs] = useState(null)
-  const [ecg, setEcg] = useState(null)
-  const [thalach, setThalach] = useState(null)
+  const [col, setCol] = useState('')
+  const [fbs, setFbs] = useState('')
+  const [ecg, setEcg] = useState('')
+  const [thalach, setThalach] = useState('')
   const [exang, setExang] = useState(null)
-  const [oldpeak, setOldpeak] = useState(null)
-  const [thal, setThal] = useState(null)
-  const [result, setResult] = useState(null)
+  const [oldpeak, setOldpeak] = useState('')
+  const [thal, setThal] = useState('')
+  const [result, setResult] = useState('')
 
 
   const [loading, setLoading] = useState(false)
@@ -94,9 +86,9 @@ const HeartPage = ({ history }) => {
           <TopNav />
 
           <div className='p-0'>
-            <FormContainer>
+            <FormContainer className='mb-5'>
               <h1>Take the Survey </h1>
-              <Form onSubmit={submitHandler}>
+              <Form className='mb-5' onSubmit={submitHandler}>
 
                 <Form.Group controlId="age">
                   <Form.Label>Age</Form.Label>
@@ -238,15 +230,20 @@ const HeartPage = ({ history }) => {
 
                 </Form.Group>
 
+                <div className='text-center'>
 
-                <Button type='button'
-                  variant='success'
-                  onClick={submitHandler}
-                >Detect</Button>
+                  <Button type='button'
+                    variant='success'
+
+                    block
+                    onClick={submitHandler}
+                  >Detect</Button>
+
+                </div>
               </Form>
             </FormContainer>
             {
-              result === null ? (
+              result === '' ? (
                 <>
                 </>
               ) : (
@@ -277,4 +274,5 @@ const HeartPage = ({ history }) => {
   )
 }
 
-export default HeartPage
+export default HeartPrediction
+

@@ -16,10 +16,22 @@
 
 .homepageCard{
   text-align: center;
+  border: solid #008CBA 1px;
+  border-radius: 15px;
+  padding: 10px;
+  
+}
+.homepageCard:hover{
+  box-shadow: 5px 5px 5px #aaaaaa;
 }
 
 .homepageCard .title {
   color: #e99002;
+}
+
+.homepageCard:hover .title {
+  color: #e99002;
+  font-weight: bolder;
 }
 
 .homepageCard .desc{

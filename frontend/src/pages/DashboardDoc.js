@@ -84,8 +84,8 @@ const DashboardDoc = ({ history }) => {
         <Col sm={6} className='text-center'>
           <h3>Your Appointments</h3>
           {
-            user.appointment && (
-              user.appointment.map((appt) => (
+            user.appointments && (
+              user.appointments.map((appt) => (
                 <Card border="primary" style={{ margin: '30px 15px 30px 15px' }}>
                   <Card.Header style={{ fontSize: '12px' }}>Appointment Id : <b>{appt._id}</b></Card.Header>
                   <Card.Body>

@@ -91,20 +91,10 @@ const Homepage = ({ history }) => {
                       title='Heart Disease'
                       description='dxgcfvugyihfrgnejtk fshubhinj' />
                   </Col>
-                  <Col>
-                    <HomepageCard
-                      img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-2-3.png'
-                      title='Urgent Care'
-                      description='dxgcfvhudefrgbjnkdcndbhinj' />
-                  </Col>
+
                 </Row>
                 <Row className='pb-5'>
-                  <Col>
-                    <HomepageCard
-                      img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-12-3.png'
-                      title='Home Test'
-                      description='dxgcfvhgvudcivubvcdnasbj dcubhinj' />
-                  </Col>
+
                   <Col>
                     <HomepageCard
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-14-3.png'
