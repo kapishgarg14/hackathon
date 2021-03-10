@@ -37,7 +37,7 @@ const UserLoginPage = ({ history }) => {
       await localStorage.setItem('user', JSON.stringify(data))
       await localStorage.setItem('token', JSON.stringify(data.token))
       await localStorage.setItem('type', 'User')
-      history.push('/')
+      history.push('/dashboardUser')
       //await redirect()
 
     } catch (err) {
