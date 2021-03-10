@@ -81,7 +81,7 @@ const DashboardDoc = ({ history }) => {
       <TopNav />
       <Container>
         <h1>Welcome {user.name}</h1>
-        <Col sm={6} className='text-center'>
+        <Col sm={12} className='text-center'>
           <h3>Your Appointments</h3>
           {
             user.appointments && (
@@ -104,7 +104,8 @@ const DashboardDoc = ({ history }) => {
                       <>
                       </>
                     ) : (
-                        <Button variant='warning'> Prescribe</Button>
+                        <>
+                        </>
                       )}
 
                   </Card.Footer>
@@ -114,10 +115,6 @@ const DashboardDoc = ({ history }) => {
             )
           }
         </Col>
-        <Col sm={6} className='text-center'>
-          { }
-        </Col>
-
       </Container>
     </>
   );

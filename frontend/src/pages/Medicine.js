@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
 import "../styles/covidpage.css";
-import { Button, Row, Col, Form } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import { Button, Table, Form, Row, Col } from "react-bootstrap";
 import TopNav from "../components/TopNav";
 import Footer from "../components/Footer";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 
-let userData = localStorage.getItem("userData");
-let doctorData = localStorage.getItem("doctorData");
-
-console.log(userData);
-console.log(doctorData);
-
 const GetMedicine = ({ history }) => {
   const [name, setName] = useState("");
+  const [medicine, setMedicine] = useState(null);
+  const [price, setPrice] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const checkCovid = async (name) => {
@@ -32,10 +26,15 @@ const GetMedicine = ({ history }) => {
         config
       );
       console.log(data);
+      setTimeout(() => {
+        setMedicine(data[0])
+        setPrice(data[1])
+      }, 15000);
 
-      //localStorage.setItem('doctorData', JSON.stringify(data))
-      //history.push('/')
-      //window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
+
+      console.log(medicine)
+      console.log(price)
+
     } catch (err) {
       console.error(err);
     }
@@ -43,11 +42,7 @@ const GetMedicine = ({ history }) => {
 
   const submitHandler = (e, data) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
+
 
     //login api
     checkCovid(name);
@@ -75,12 +70,41 @@ const GetMedicine = ({ history }) => {
                     ></Form.Control>
                   </Form.Group>
 
-
-                  <Button type="button" variant="success" onClick={submitHandler}>
-                    Detect
+                  <div className='text-center mb-5'>
+                    <Button type="button" variant="success" onClick={submitHandler}>
+                      Find
                 </Button>
+                  </div>
                 </Form>
               </FormContainer>
+              <Row className='mb-5'>
+                <Col></Col>
+                <Col>
+                  <Row style={{ fontSize: '26px', borderBottom: 'solid 1px black' }}>
+                    Name
+                  </Row>
+                  {
+                    medicine && (
+                      medicine.map((m) => (
+                        <Row className='py-2' style={{ width: '500px' }}>{m}</Row>
+                      ))
+                    )
+                  }
+                </Col>
+                <Col style={{ width: '80px' }}>
+                  <Row style={{ fontSize: '26px', borderBottom: 'solid 1px black', width: '100px' }}>
+                    Price
+                  </Row>
+                  {
+                    price && (
+                      price.map((p) => (
+                        <Row className='py-2' style={{}}>{p}</Row>
+                      ))
+                    )
+                  }
+                </Col>
+              </Row>
+
             </div>
             <Footer />
           </>

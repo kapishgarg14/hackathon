@@ -3,6 +3,8 @@ import React from 'react'
 import '../styles/homepage.css'
 
 const HomepageCard = (props) => {
+
+
   return (
     <div className='homepageCard'>
       <div className='img py-1'><img src={props.img} alt='img' /></div>

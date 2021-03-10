@@ -82,7 +82,7 @@ const Homepage = ({ history }) => {
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-4-3.png'
                       title='Book Appointment'
                       description='Get yourself checked by leading doctors!'
-                      onClick={() => { history.push('') }}
+                      onClick={() => { history.push('/appointment') }}
                     />
                   </Col>
                   <Col>
@@ -90,7 +90,7 @@ const Homepage = ({ history }) => {
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-16-3.png'
                       title='Heart Risk Prediction'
                       description='"heart is health". We will give you a reliable picture of your heart health, fully online!'
-                      onClick={() => { history.push('') }}
+                      onClick={() => { history.push('/heartprediction') }}
                     />
                   </Col>
                   <Col>
@@ -98,7 +98,7 @@ const Homepage = ({ history }) => {
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-13-3.png'
                       title='Find Medicine'
                       description='Know your medicine. search all kinds of medicines from our database'
-                      onClick={() => { history.push('') }}
+                      onClick={() => { history.push('/medicine') }}
                     />
                   </Col>
 
@@ -110,7 +110,7 @@ const Homepage = ({ history }) => {
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-14-3.png'
                       title='Book a Test'
                       description='Have your doubts? Get tested for covid-19.'
-                      onClick={() => { history.push('') }}
+                      onClick={() => { history.push('/testing') }}
                     />
                   </Col>
                   <Col>
@@ -118,7 +118,7 @@ const Homepage = ({ history }) => {
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-9-3.png'
                       title='Covid Vaccination'
                       description='Opt for vaccination at nearby centres'
-                      onClick={() => { history.push('') }}
+                      onClick={() => { history.push('/vaccination') }}
                     />
                   </Col>
                   <Col>
@@ -126,7 +126,7 @@ const Homepage = ({ history }) => {
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-6-3.png'
                       title='Covid Prediction'
                       description='Get a fairly potential self-test result at home'
-                      onClick={() => { history.push('') }}
+                      onClick={() => { history.push('/covidprediction') }}
                     />
                   </Col>
 

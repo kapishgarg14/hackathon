@@ -58,12 +58,12 @@ export const DisplayMapFC = (props) => {
         `&q=${props.codeword}+near+me&apiKey=mshEmDycSRNqfmR-dOyynjyYwo0tdcQC9Km4icq8l38`;
       let data;
       axios.get(url).then((response) => {
-        console.log(response.data.results)
+        //console.log(response.data.results)
         data = response.data.results;
-        console.log(data)
+        //console.log(data)
         for (let i = 0; i < data.length; i++) {
           let curr = data[i].position;
-          console.log(curr);
+          //console.log(curr);
           if (curr) {
             let parisMarker = new H.map.Marker({ lat: curr[0], lng: curr[1] });
             hMap.addObject(parisMarker);
