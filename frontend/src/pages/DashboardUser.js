@@ -45,6 +45,7 @@ const DashboardUser = ({ history }) => {
   return (
     <>
       <TopNav />
+      {!user?document.location.reload() : console.log('User detected')}
 
       <h1>Welcome {user.name}</h1>
 

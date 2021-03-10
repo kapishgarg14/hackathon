@@ -80,6 +80,7 @@ const DashboardDoc = ({ history }) => {
     <>
       <TopNav />
       <Container>
+      {!user?document.location.reload() : console.log('User detected')}
         <h1>Welcome {user.name}</h1>
         <Col sm={12} className='text-center'>
           <h3>Your Appointments</h3>
