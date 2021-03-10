@@ -48,8 +48,8 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
       <li><a href="#aim-of-the-project">Aim of the project</a></li>
-        <li><a href="#built-with">Built With</a></li>
       </ul>
+      <a href="#built-with">Built With</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -110,13 +110,17 @@ The aim of this project is to make interaction between patients and doctors more
 ⚕️ View medical history and previous appointments of patient
 
 
-### Built With
+## Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+These are the major technlogies/frameworks that have been utilized. Other frameworks are mentioned in the acknowledgement.
 
+### Web Application -
+
+MERN application that is express js for the backend react for frontend part and mongo db as out database
+
+* [React-Bootstrap](https://react-bootstrap.github.io/)
+* [ExpressJs](http://expressjs.com/)
+* [MongoDB](https://www.mongodb.com/)
 
 
 <!-- GETTING STARTED -->
