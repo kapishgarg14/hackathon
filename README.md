@@ -76,11 +76,9 @@
     <img src="readimages/homeimage.png" alt="Logo" width="350" height="200">
   </a>
 
-A web application for easy interaction between patient and doctors .During the covid pandemic many patients want to interact with the doctors but are not going outside seems risky so they avoid it .
+A web application for easy interaction between patient and doctors . The Covid-19 pandemic has caused extreme logistic issues and because of safety reasons, the general populace has become averse to going outside for even major reasons,so we made this application that allows patients and doctors to register themselves and interact as well as allowing patients to set up appointment with doctors.
 
-So we made this application that allows patients and doctors to register themselves and interact as well as allowing patients to set up appointment with doctors.
-
-A lot of users feel something is wrong with their body but they do not get it diagnosited to due to social stigma so we have employed a feature that can determine the likelihood of diseases like Heart failure and Sars-Covid19 using basic symptoms and body parameters that can be easily calculated at home and according to the result they could decide whether it is necessary to go to a doctor or not.
+A lot of users may feel something is wrong with their body but they do not get it diagnosited to due to a large variety of reasons such as social stigma and personal responsibilities so we have employed a feature that can determine the likelihood of diseases like Heart failure and Sars-Covid19 using basic symptoms as well as body parameters that can be easily calculated at home and according to the result , it would give more information to the user and allow them to set up appointments directly
 
 ### Aim of the project
 
