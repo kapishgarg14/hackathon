@@ -20,22 +20,21 @@
 <br />
 <p align="center">
   <a href="https://github.com/AkshatSaraswat03/hackathon">
-    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ucsfhealth.org%2F-%2Fmedia%2Fproject%2Fucsf%2Fucsf-health%2Ftreatment%2Fhero%2Fmedical-abortion-2x.jpg&f=1&nofb=1" alt="Logo" width="80" height="80">
+    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ucsfhealth.org%2F-%2Fmedia%2Fproject%2Fucsf%2Fucsf-health%2Ftreatment%2Fhero%2Fmedical-abortion-2x.jpg&f=1&nofb=1" alt="Logo" width="160" height="160">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">ChikitsApp</h3>
 
   <p align="center">
     An awesome README template to jumpstart your projects!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <!-- Yaha Hosted link dalni -->
+    <a href=""><strong>Hosted Website »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/AkshatSaraswat03/hackathon/tree/master/backend">Backend Code</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/AkshatSaraswat03/hackathon/tree/master/frontend">Front end code</a>
   </p>
 </p>
 
