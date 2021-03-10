@@ -17,7 +17,6 @@ const Register = ({ location, history }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [speciality, setSpeciality] = useState('')
-  const [paymentMethod, setPaymentMethod] = useState('')
   const [fees, setFees] = useState('')
   const [validated, setValidated] = useState(false);
 
@@ -31,7 +30,7 @@ const Register = ({ location, history }) => {
   // }, [history, userInfo, redirect])
 
 
-  const registerDoctor = async (name, age, address, gender, contactNumber, email, password,speciality,paymentMethod, fees) => {
+  const registerDoctor = async (name, age, address, gender, contactNumber, email, password, speciality, fees) => {
     try {
 
       const config = {
@@ -39,9 +38,9 @@ const Register = ({ location, history }) => {
           'Content-Type': 'application/json'
         }
       }
-      const { data } = await axios.post('/api/doctors', { name, age, address, gender, contactNumber, email, password,speciality,paymentMethod, fees }, config)
+      const { data } = await axios.post('/api/doctors', { name, age, address, gender, contactNumber, email, password, speciality, fees }, config)
       console.log(data)
-      history.push('/registerchoice')
+      history.push('/loginchoice')
 
     } catch (err) {
       console.error(err)
@@ -49,10 +48,10 @@ const Register = ({ location, history }) => {
   }
 
 
-  const submitHandler = (e,data) => {
+  const submitHandler = (e, data) => {
     e.preventDefault()
     if (password === confirmPassword) {
-      registerDoctor(name, age, address, gender, contactNumber, email, password,speciality,paymentMethod, fees)
+      registerDoctor(name, age, address, gender, contactNumber, email, password, speciality, fees)
     }
 
   };
@@ -138,9 +137,9 @@ const Register = ({ location, history }) => {
           <Form.Group controlId="address">
             <Form.Label>Address</Form.Label>
             <Form.Control type="text"
-            value={address}
-              onChange={e => setAddress(e.target.value)} 
-             placeholder="Address" required />
+              value={address}
+              onChange={e => setAddress(e.target.value)}
+              placeholder="Address" required />
           </Form.Group>
 
 
@@ -172,21 +171,6 @@ const Register = ({ location, history }) => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group controlId="payment">
-            <Form.Label>paymentMethod</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="Payment"
-              value={paymentMethod}
-              onChange={e => setPaymentMethod(e.target.value)}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please provide a valid Name.
-            </Form.Control.Feedback>
-          </Form.Group>
-
-
 
           <Form.Group controlId="validationCustom01">
             <Form.Label>Password</Form.Label>
@@ -210,7 +194,7 @@ const Register = ({ location, history }) => {
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
-          
+
 
           <Form.Group>
             <Form.Check

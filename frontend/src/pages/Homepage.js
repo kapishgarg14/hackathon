@@ -57,6 +57,10 @@ const Homepage = ({ history }) => {
           <div className='p-0'>
 
             <img src='/images/homepage.jpg' alt='default' className='homepageImg' />
+            <div className='tagline'>
+              <p>Your wellness,</p>
+              <p className='pl-5 ml-5'>our mission</p>
+            </div>
             <LinkContainer to='/appointment'>
               <Button variant="outline-warning" size="lg" className='AppointmentBtn' onClick={() => {
                 console.log(user)
@@ -76,20 +80,26 @@ const Homepage = ({ history }) => {
                   <Col>
                     <HomepageCard
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-4-3.png'
-                      title='Primary Care'
-                      description='dxgcfvgsjdhkfwndcvhubhinj' />
+                      title='Book Appointment'
+                      description='Get yourself checked by leading doctors!'
+                      onClick={() => { history.push('') }}
+                    />
                   </Col>
                   <Col>
                     <HomepageCard
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-16-3.png'
-                      title='Covid'
-                      description='dxgcfvhubfcygvubhijnfregfsdcahinj' />
+                      title='Heart Risk Prediction'
+                      description='"heart is health". We will give you a reliable picture of your heart health, fully online!'
+                      onClick={() => { history.push('') }}
+                    />
                   </Col>
                   <Col>
                     <HomepageCard
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-13-3.png'
-                      title='Heart Disease'
-                      description='dxgcfvugyihfrgnejtk fshubhinj' />
+                      title='Find Medicine'
+                      description='Know your medicine. search all kinds of medicines from our database'
+                      onClick={() => { history.push('') }}
+                    />
                   </Col>
 
                 </Row>
@@ -98,20 +108,26 @@ const Homepage = ({ history }) => {
                   <Col>
                     <HomepageCard
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-14-3.png'
-                      title='Routine Checkup'
-                      description='dxgcfvhuxtuvghvutcyxtycvubibhinj' />
+                      title='Book a Test'
+                      description='Have your doubts? Get tested for covid-19.'
+                      onClick={() => { history.push('') }}
+                    />
                   </Col>
                   <Col>
                     <HomepageCard
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-9-3.png'
-                      title='Care'
-                      description='dxgcfvhutgyihvjhbouivcyfygbhinj' />
+                      title='Covid Vaccination'
+                      description='Opt for vaccination at nearby centres'
+                      onClick={() => { history.push('') }}
+                    />
                   </Col>
                   <Col>
                     <HomepageCard
                       img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-6-3.png'
-                      title='Test'
-                      description='dxgcfvhutfugyivctfygiubhinj' />
+                      title='Covid Prediction'
+                      description='Get a fairly potential self-test result at home'
+                      onClick={() => { history.push('') }}
+                    />
                   </Col>
 
                 </Row>
@@ -128,7 +144,7 @@ const Homepage = ({ history }) => {
                       <Carousel.Item key={doctor._id}>
                         <img
                           className="d-block w-100"
-                          src='https://images.iphonephotographyschool.com/22682/How-To-Blur-Background-On-iPhone.jpg'
+                          src='/images/doctorTest.jpg'
                           alt="slide"
                         />
                         <Carousel.Caption>

@@ -116,7 +116,7 @@ router.post('/bookAppointment', asyncHandler(async (req, res) => {
     symptoms,
     appointmentDate: new Date(appointmentDate),
     department,
-    doctor,
+    doctor
   };
   console.log("User : ", user);
 
@@ -125,7 +125,7 @@ router.post('/bookAppointment', asyncHandler(async (req, res) => {
   const appointedDoc = await Doctor.findOne({ name: req.body.doctor });
 
   appointedDoc.appointments.push({
-    user: userId,
+    patient: userId,
     ...req.body
   })
 

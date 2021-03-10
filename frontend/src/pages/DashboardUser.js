@@ -92,41 +92,54 @@ const DashboardUser = ({ history }) => {
             <Col>
               <HomepageCard
                 img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-4-3.png'
-                title='Primary Care'
-                description='dxgcfvgsjdhkfwndcvhubhinj' />
+                title='Book Appointment'
+                description='Get yourself checked by leading doctors!'
+                onClick={() => { history.push('') }}
+              />
             </Col>
             <Col>
               <HomepageCard
                 img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-16-3.png'
-                title='Covid'
-                description='dxgcfvhubfcygvubhijnfregfsdcahinj' />
+                title='Heart Risk Prediction'
+                description='"heart is health". We will give you a reliable picture of your heart health, fully online!'
+                onClick={() => { history.push('') }}
+              />
             </Col>
             <Col>
               <HomepageCard
                 img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-13-3.png'
-                title='Heart Disease'
-                description='dxgcfvugyihfrgnejtk fshubhinj' />
+                title='Find Medicine'
+                description='Know your medicine. search all kinds of medicines from our database'
+                onClick={() => { history.push('') }}
+              />
             </Col>
 
           </Row>
           <Row className='pb-5'>
+
             <Col>
               <HomepageCard
                 img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-14-3.png'
-                title='Routine Checkup'
-                description='dxgcfvhuxtuvghvutcyxtycvubibhinj' />
+                title='Book a Test'
+                description='Have your doubts? Get tested for covid-19.'
+                onClick={() => { history.push('') }}
+              />
             </Col>
             <Col>
               <HomepageCard
                 img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-9-3.png'
-                title='Care'
-                description='dxgcfvhutgyihvjhbouivcyfygbhinj' />
+                title='Covid Vaccination'
+                description='Opt for vaccination at nearby centres'
+                onClick={() => { history.push('') }}
+              />
             </Col>
             <Col>
               <HomepageCard
                 img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-6-3.png'
-                title='Test'
-                description='dxgcfvhutfugyivctfygiubhinj' />
+                title='Covid Prediction'
+                description='Get a fairly potential self-test result at home'
+                onClick={() => { history.push('') }}
+              />
             </Col>
 
           </Row>

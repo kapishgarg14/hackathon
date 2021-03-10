@@ -39,7 +39,7 @@ const TopNav = ({ history }) => {
     <Navbar collapseOnSelect sticky='top' expand="lg" bg="primary" variant="dark" className='customNavbar py-3 px-5'>
 
       <LinkContainer to='/'>
-        <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="/">ChikitsApp</Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -93,7 +93,7 @@ const TopNav = ({ history }) => {
                       Covid 19
               </div>
                     <div className='navDiv' onClick={() => history.push('/testing')}>
-                      Tests
+                      Covid Testing
               </div>
 
 

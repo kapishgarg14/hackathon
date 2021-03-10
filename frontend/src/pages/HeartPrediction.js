@@ -53,9 +53,6 @@ const HeartPrediction = ({ history }) => {
       const data = await axios.post('https://hacknsut21api.herokuapp.com/heart/', config)
       console.log(data)
       setResult(data)
-      // localStorage.setItem('doctorData', JSON.stringify(data))
-      // history.push('/')
-      //window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
 
 
     } catch (err) {
@@ -66,16 +63,11 @@ const HeartPrediction = ({ history }) => {
 
 
 
-  const submitHandler = (e, data) => {
+  const submitHandler = (e) => {
     e.preventDefault()
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
 
-    //login api
-    //checkCovid(email, password)
+    //checking  api
+    checkHeart(age, gender, cp, trestbps, col, fbs, ecg, thalach, exang, oldpeak, thal)
 
   };
 
