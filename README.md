@@ -167,9 +167,35 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+After running the 'npm run dev' command  on the terminal, you'll be redirected to localhost:3000/ from where you can perform all of the following operations via following the navbar or entering their routes:
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### 1. Registering a visitor as a user or a doctor
+
+1. As a User
+
+
+2. As a doctor
+
+### 2. Performing encrypted safe logins for bothe the categories
+
+### 3. Scheduling appointments and getting prescriptions
+
+### 4. Viewing a dashboard
+
+### 5. Booking an appointment as a user
+
+### 6. Booking a test
+
+### 7. Heart disease Probabilistic prediction
+
+### 8. Coronavirus Probabilistic prediction
+
+### 9. Finding the data related to a particular medicine by scraping through online websites
+
+### 10. Covid-19 vaccination page
+
+
+
 
 
 
