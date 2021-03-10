@@ -99,7 +99,7 @@ const doctorSchema = mongoose.Schema({
     appointmentDate: {
       type: Date
     },
-    department: {
+    speciality: {
       type: String
     },
     doctor: {

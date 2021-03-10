@@ -5,7 +5,7 @@ const Doctor = require('../models/doctorModel')
 const bcrypt = require('bcryptjs')
 const generateToken = require('../utils/generateToken')
 const { protectDoctor } = require('../middlewares/authMiddleware')
-
+const User = require('../models/userModel')
 
 //admin middleware 
 // const admin = (req, res, next) => {
@@ -24,7 +24,7 @@ const { protectDoctor } = require('../middlewares/authMiddleware')
 //public
 router.post('/', asyncHandler(async (req, res) => {
   console.log('request aayi bc')
-  const { name, age, address, gender, contactNumber, email, password,speciality,paymentMethod, fees } = req.body
+  const { name, age, address, gender, contactNumber, email, password, speciality, paymentMethod, fees } = req.body
 
   const doctorExists = await Doctor.findOne({ email })
 
@@ -141,6 +141,52 @@ router.post('/login', asyncHandler(async (req, res) => {
     throw new Error('Invalid email or password')
   }
 }))
+
+
+//upcoming appointments for doctor
+//private
+router.get('/upcomingAppointments', asyncHandler(async (req, res) => {
+  const doctor = await Doctor.findById(req.query.id)
+  res.json(doctor);
+}))
+
+
+router.post('/givePrescription', asyncHandler(async (req, res) => {
+  const { userId, objID, symptoms, medicine, comments } = req.body;
+  const user = await User.findById(userId);
+
+  user.appointment.prescription = {
+    symptoms,
+    medicine,
+    comments,
+    date: Date.now()
+  }
+
+  await user.save();
+
+  Doctor.updateOne(
+    { "appointments._id": objID },
+    {
+      $set: {
+        "appointments.$.prescription": {
+          symptoms,
+          medicine,
+          comments,
+          date: Date.now()
+        }
+      }
+    },
+    function (err, model) {
+      if (err) {
+        console.error(err);
+        return res.send(err);
+      }
+      return res.json(model)
+    }
+  )
+
+}))
+
 
 
 // to get a logged in user.
