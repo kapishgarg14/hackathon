@@ -88,19 +88,25 @@ The aim of this project is to make interaction between patients and doctors more
 
 
 
-## What we provide to patients -
+### What we provide to patients -
 
 📄 Doctor appointment booking
+
 🔬 Lab test booking
+
 🧾 Online prescription & medical history database
+
 💊 Generic drugs to brand name converter & Price Fetcher System 
+
 🧬 Disease prediction services
 
 
 
-## For doctors, we provide the following services:
+### For doctors, we provide the following services:
 💻 Appointment management system
+
 ✒️ Online prescription creation system
+
 ⚕️ View medical history and previous appointments of patient
 
 
