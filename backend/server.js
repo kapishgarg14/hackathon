@@ -17,9 +17,6 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json())
 
-// app.get('/', (req, res) => {
-//   res.send("hello...")
-// })
 
 
 app.use('/api/doctors', doctorRoutes)
