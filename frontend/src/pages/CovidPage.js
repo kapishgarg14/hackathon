@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react'
 import '../styles/covidpage.css'
 import '../styles/map.css'
 import { DisplayMapFC } from '../components/DisplayMapFC'
@@ -10,14 +9,10 @@ import Footer from '../components/Footer'
 import Loader from '../components/Loader'
 
 
-let userData = localStorage.getItem('userData');
-let doctorData = localStorage.getItem('doctorData');
-
 
 const CovidPage = () => {
 
-  const [doctors, setDoctors] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [loading,] = useState(false)
 
 
 
@@ -41,32 +36,48 @@ const CovidPage = () => {
 
                   <Col sm={6}>
                     <h3 className='mb-4'>Covid - 19 CoronaVirus Prediction and Testing</h3>
-                    <p>
-                      DocTap has carried out over 80,000 Covid-19 tests from our 30+ London locations, many open 7 days per week. We specialise in PCR, antigen and antibody tests, with results available in under 3 hours. All tests include a doctor's results certificate detailing your results and suitability to travel or work. We also provide same day Test to Release certificates for travellers wishing to reduce their quarantine upon returning to England.
-                    </p>
-                    <p>
-                      Given the importance and urgency of Covid testing, we do not provide postal tests. All our tests are taken in a medical facility, either by a healthcare professional or as a guided self swab.
-                    </p>
-                    <p>
-                      Choose from 3 hour, same day or next day results. Your results will be simultaneously emailed to you and uploaded to your DocTap account. In the exceptionally unlikely event of your results not being available within the guaranteed timeframe then we would refund the cost of your test in full.
-                    </p>
+                    <p>COVID-19: It has been more than a year since the International outbreak of the SAARS CoV-19 came to light, and the healthcare industry has been working for our wellness ever since. We at ChikitsApp also aim to educate, help, and protect people from any lurking dangers of this virus.</p>
+                    <p>To prevent infection and to slow transmission of COVID-19:</p>
 
-                    <LinkContainer to='/covidprediction'>
-                      <Button variant="success" size="lg" className='covidPredictionBtn mt-3 mx-5'>
-                        Prediction
-                      </Button>
-                    </LinkContainer>
-                    <LinkContainer to='/testing'>
-                      <Button variant="danger" size="lg" className='testingBtn mt-3 mx-5'>
-                        Book a Test Online
-                      </Button>
-                    </LinkContainer>
-
-
-
+                    <ul>
+                      <li>	Wash your hands regularly with soap and water, or clean them with alcohol-based hand rub.</li>
+                      <li>	Maintain at least 1 metre distance between you and people coughing or sneezing.</li>
+                      <li>	Avoid touching your face.</li>
+                      <li>	Cover your mouth and nose when coughing or sneezing.</li>
+                      <li>	Stay home if you feel unwell.</li>
+                      <li>	Refrain from smoking and other activities that weaken the lungs.</li>
+                      <li>	Practice physical distancing by avoiding unnecessary travel and staying away from large groups of people.</li>
+                    </ul>
                   </Col>
 
                 </Row>
+                <Row>
+                  <p>
+                    However, we realise that even following all above instructions can not be enough to ensure safety from the virus. And for those circumstances, ChikitsApp offers to our users several Covid-19 based services which are as follows:
+                    </p>
+                  <ul>
+
+                    <li>	Covid prediction: if you’re having slight doubts about having caught Covid-19 and are not convinced for a full-fledged Covid test yet, you can try out our Covid predictor which will give you a fairly reliable prediction of having contracted Covid-19, based on your symptoms and health condition. This predictor will ask of you, in the form of a survey, a series of questions related to symptoms and conditions, and henceforth will inform of your chances of being affected by Covid-19.</li>
+                    <li>	Covid Test: Those fearing to have contracted the Covid-19 can make use of this service which will enlist all Covid testing centres nearest to the user.</li>
+                    <li>	Covid vaccination: Here, we will list on a real time map all the registered vaccination centres near you, giving you the liberty to choose only the best out of all the available options.</li>
+                  </ul>
+                  <div className='text-center mb-5'>
+
+                    <LinkContainer to='/covidprediction' style={{ marginLeft: '350px' }}>
+                      <Button variant="success" size="lg" className='covidPredictionBtn' >
+                        Prediction
+                      </Button>
+                    </LinkContainer>
+                    <LinkContainer to='/testing' style={{ marginLeft: '200px' }}>
+                      <Button variant="danger" size="lg" className='testingBtn' >
+                        Book a Test Online
+                      </Button>
+                    </LinkContainer>
+                  </div>
+                </Row>
+
+
+
                 <h3 className='mb-4'>Covid-19 Tests</h3>
 
                 <Row>

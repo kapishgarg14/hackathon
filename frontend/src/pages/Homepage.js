@@ -7,7 +7,6 @@ import { Button, Container, Row, Col, Carousel } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import Footer from '../components/Footer'
 import TopNav from '../components/TopNav'
-import HomepageCard from '../components/HomepageCard'
 import Loader from '../components/Loader'
 
 
@@ -44,7 +43,7 @@ const Homepage = ({ history }) => {
     }
 
     getDoctors()
-  }, [])
+  }, [user])
 
 
 
@@ -57,6 +56,10 @@ const Homepage = ({ history }) => {
           <div className='p-0'>
 
             <img src='/images/homepage.jpg' alt='default' className='homepageImg' />
+            <div className='tagline'>
+              <p>Your wellness,</p>
+              <p className='pl-5 ml-5'>our mission</p>
+            </div>
             <LinkContainer to='/appointment'>
               <Button variant="outline-warning" size="lg" className='AppointmentBtn' onClick={() => {
                 console.log(user)
@@ -74,44 +77,124 @@ const Homepage = ({ history }) => {
                 <h1 className='text-center py-5'>Our Services</h1>
                 <Row className='pb-5'>
                   <Col>
-                    <HomepageCard
-                      img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-4-3.png'
-                      title='Primary Care'
-                      description='dxgcfvgsjdhkfwndcvhubhinj' />
+                    <div className='homepageCard'>
+                      <div className='img py-1'><img src='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-4-3.png' alt='img' /></div>
+                      <h4 className='title py-2'>Book Appointment</h4>
+                      <div className='desc py-2 px-3'>Get yourself checked by leading doctors!</div>
+                      <LinkContainer to='/appointment'>
+                        <Button variant="outline-success" onClick={() => {
+                          console.log(user)
+                          if (user === null) {
+                            history.push('/loginchoice')
+                          } else {
+                            history.push('/appointment')
+                          }
+                        }}>
+                          Learn More
+                        </Button>
+                      </LinkContainer>
+                    </div>
                   </Col>
                   <Col>
-                    <HomepageCard
-                      img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-16-3.png'
-                      title='Covid'
-                      description='dxgcfvhubfcygvubhijnfregfsdcahinj' />
+                    <div className='homepageCard'>
+                      <div className='img py-1'><img src='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-16-3.png' alt='img' /></div>
+                      <h4 className='title py-2'>Heart Risk Prediction</h4>
+                      <div className='desc py-2 px-3'>heart is health". We will give you a reliable picture of your heart health, fully online!</div>
+                      <LinkContainer to='/heartprediction'>
+                        <Button variant="outline-success" onClick={() => {
+                          console.log(user)
+                          if (user === null) {
+                            history.push('/loginchoice')
+                          } else {
+                            history.push('/heartprediction')
+                          }
+                        }}>
+                          Learn More
+                        </Button>
+                      </LinkContainer>
+                    </div>
                   </Col>
                   <Col>
-                    <HomepageCard
-                      img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-13-3.png'
-                      title='Heart Disease'
-                      description='dxgcfvugyihfrgnejtk fshubhinj' />
-                  </Col>
 
+                    <div className='homepageCard'>
+                      <div className='img py-1'><img src='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-13-3.png' alt='img' /></div>
+                      <h4 className='title py-2'>Find Medicine</h4>
+                      <div className='desc py-2 px-3'>Know your medicine. search all kinds of medicines from our database</div>
+                      <LinkContainer to='/medicine'>
+                        <Button variant="outline-success" onClick={() => {
+                          console.log(user)
+                          if (user === null) {
+                            history.push('/loginchoice')
+                          } else {
+                            history.push('/medicine')
+                          }
+                        }}>
+                          Learn More
+                        </Button>
+                      </LinkContainer>
+                    </div>
+                  </Col>
                 </Row>
                 <Row className='pb-5'>
 
                   <Col>
-                    <HomepageCard
-                      img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-14-3.png'
-                      title='Routine Checkup'
-                      description='dxgcfvhuxtuvghvutcyxtycvubibhinj' />
+                    <div className='homepageCard'>
+                      <div className='img py-1'><img src='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-14-3.png' alt='img' /></div>
+                      <h4 className='title py-2'>Book a Test</h4>
+                      <div className='desc py-2 px-3'>Have your doubts? Get tested for covid-19.</div>
+                      <LinkContainer to='/testing'>
+                        <Button variant="outline-success" onClick={() => {
+                          console.log(user)
+                          if (user === null) {
+                            history.push('/loginchoice')
+                          } else {
+                            history.push('/testing')
+                          }
+                        }}>
+                          Learn More
+                        </Button>
+                      </LinkContainer>
+                    </div>
+                  </Col>
+
+                  <Col>
+                    <div className='homepageCard'>
+                      <div className='img py-1'><img src='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-9-3.png' alt='img' /></div>
+                      <h4 className='title py-2'>Covid Vaccination</h4>
+                      <div className='desc py-2 px-3'>Opt for vaccination at nearby centres</div>
+                      <LinkContainer to='/vaccination'>
+                        <Button variant="outline-success" onClick={() => {
+                          console.log(user)
+                          if (user === null) {
+                            history.push('/loginchoice')
+                          } else {
+                            history.push('/vaccination')
+                          }
+                        }}>
+                          Learn More
+                        </Button>
+                      </LinkContainer>
+                    </div>
                   </Col>
                   <Col>
-                    <HomepageCard
-                      img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-9-3.png'
-                      title='Care'
-                      description='dxgcfvhutgyihvjhbouivcyfygbhinj' />
-                  </Col>
-                  <Col>
-                    <HomepageCard
-                      img='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-6-3.png'
-                      title='Test'
-                      description='dxgcfvhutfugyivctfygiubhinj' />
+
+                    <div className='homepageCard'>
+                      <div className='img py-1'><img src='https://www.elegantthemes.com/layouts/wp-content/uploads/2018/05/health-icon-6-3.png' alt='img' /></div>
+                      <h4 className='title py-2'>Covid Prediction</h4>
+                      <div className='desc py-2 px-3'>Get a fairly potential self-test result at home</div>
+                      <LinkContainer to='/covidprediction'>
+                        <Button variant="outline-success" onClick={() => {
+                          console.log(user)
+                          if (user === null) {
+                            history.push('/loginchoice')
+                          } else {
+                            history.push('/covidprediction')
+                          }
+                        }}>
+                          Learn More
+                        </Button>
+                      </LinkContainer>
+                    </div>
                   </Col>
 
                 </Row>
@@ -128,7 +211,7 @@ const Homepage = ({ history }) => {
                       <Carousel.Item key={doctor._id}>
                         <img
                           className="d-block w-100"
-                          src='https://images.iphonephotographyschool.com/22682/How-To-Blur-Background-On-iPhone.jpg'
+                          src='/images/doctorTest.jpg'
                           alt="slide"
                         />
                         <Carousel.Caption>

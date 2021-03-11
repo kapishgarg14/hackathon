@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react'
 import '../styles/covidpage.css'
 import '../styles/map.css'
 import { DisplayMapFC } from '../components/DisplayMapFC'
-import { Button, Container, Row, Col, Table } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import TopNav from '../components/TopNav'
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
@@ -38,14 +36,25 @@ const VaccinationPage = () => {
                   <Col sm={6}>
                     <h3 className='mb-4'>Covid - 19 CoronaVirus Prediction and Testing</h3>
                     <p>
-                      DocTap has carried out over 80,000 Covid-19 tests from our 30+ London locations, many open 7 days per week. We specialise in PCR, antigen and antibody tests, with results available in under 3 hours. All tests include a doctor's results certificate detailing your results and suitability to travel or work. We also provide same day Test to Release certificates for travellers wishing to reduce their quarantine upon returning to England.
-                    </p>
+                      We at <b>ChikitsApp</b> understand the ultimate need of the dire situation, a Covid-19 vaccine. Fortunately, the Govt. of India has approved the emergency distribution of Covishied and Covaxin, the two finished vaccines released by Serum Institute of India (SII) & Bharat Biotech respectively.
+                      </p>
                     <p>
-                      Given the importance and urgency of Covid testing, we do not provide postal tests. All our tests are taken in a medical facility, either by a healthcare professional or as a guided self swab.
+                      Now the question arises – how can you apply for vaccination? Worry not because <b>ChikitsApp</b> has got you covered. Here, we will list on a real time map all the registered vaccination centers near you, giving you the liberty to choose only the best out of all the available options.
                     </p>
+                    The Health Ministry has issued guidelines for the vaccination drive
                     <p>
-                      Choose from 3 hour, same day or next day results. Your results will be simultaneously emailed to you and uploaded to your DocTap account. In the exceptionally unlikely event of your results not being available within the guaranteed timeframe then we would refund the cost of your test in full.
+                      The Indian government has released a list of Dos and Don’ts for the COVID-19 vaccine.
                     </p>
+                    <ul>
+                      <li>The vaccine will be administered to people above 18 years of age.</li>
+                      <li>Pregnant women, lactating mothers and those unsure of pregnancy have been advised to avoid the vaccination shot.</li>
+                      <li>The vaccines are not interchangeable. Both the vaccine doses have to be administered from the same manufacturer.</li>
+                      <li>The time duration between the two doses of the vaccine is 14 days.</li>
+                    </ul>
+
+
+
+
 
                   </Col>
 

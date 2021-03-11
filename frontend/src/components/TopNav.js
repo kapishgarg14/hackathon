@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import '../styles/navbar.css'
-import { Link, withRouter, BrowserRouter as Router } from 'react-router-dom';
+import { withRouter, BrowserRouter as Router } from 'react-router-dom';
 import { useRecoilState } from "recoil";
 import { userAtom, tokenAtom, typeAtom } from "../global/globalState";
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
@@ -13,9 +13,6 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 
 const TopNav = ({ history }) => {
-
-  const [userlogin, setUserlogin] = useState(false)
-  const [doctorlogin, setDoctorlogin] = useState(false)
 
   const [user, setUser] = useRecoilState(userAtom);
   const [, setToken] = useRecoilState(tokenAtom);
@@ -39,7 +36,7 @@ const TopNav = ({ history }) => {
     <Navbar collapseOnSelect sticky='top' expand="lg" bg="primary" variant="dark" className='customNavbar py-3 px-5'>
 
       <LinkContainer to='/'>
-        <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="/">ChikitsApp</Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -69,13 +66,13 @@ const TopNav = ({ history }) => {
                           </div>
                       </NavDropdown.Item>
                       <NavDropdown.Item >
-                        <div className='navDiv' onClick={() => history.push('/heartprediciton')}>
-                          Heart Detection
+                        <div className='navDiv' onClick={() => history.push('/heartprediction')}>
+                          Heart Risk prediction
                           </div>
                       </NavDropdown.Item>
                       <NavDropdown.Item >
                         <div className='navDiv' onClick={() => history.push('/covidprediction')}>
-                          Covid Detection
+                          Covid Prediction
                           </div>
                       </NavDropdown.Item>
                       <NavDropdown.Item >
@@ -93,7 +90,7 @@ const TopNav = ({ history }) => {
                       Covid 19
               </div>
                     <div className='navDiv' onClick={() => history.push('/testing')}>
-                      Tests
+                      Covid Testing
               </div>
 
 
@@ -120,13 +117,13 @@ const TopNav = ({ history }) => {
                           </div>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                          <div className='navDiv' onClick={() => history.push('/heartprediciton')}>
-                            Heart Detection
+                          <div className='navDiv' onClick={() => history.push('/heartprediction')}>
+                            Heart Risk Prediction
                           </div>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
                           <div className='navDiv' onClick={() => history.push('/covidprediction')}>
-                            Covid Detection
+                            Covid Prediction
                           </div>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
@@ -144,7 +141,7 @@ const TopNav = ({ history }) => {
                         Covid 19
                       </div>
                       <div className='navDiv' onClick={() => history.push('/testing')}>
-                        Tests
+                        Covid Test
                       </div>
 
 
@@ -152,9 +149,6 @@ const TopNav = ({ history }) => {
                         About
                       </div>
 
-                      <div className='navDiv' onClick={() => { }}>
-                        Contact Us
-                      </div>
                     </>
                   )}
               </>

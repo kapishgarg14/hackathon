@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { userAtom, tokenAtom } from "../global/globalState";
 import TopNav from "../components/TopNav";
 import '../styles/DashboardDoc.css'
-import { Button, Container, Row, Col, Form, Card } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
-import FormContainer from '../components/FormContainer'
-import Loader from '../components/Loader'
+import { Container, Col, Card } from 'react-bootstrap'
+
 //import Footer from "../components/Footer";
 
 
@@ -16,37 +14,37 @@ const DashboardDoc = ({ history }) => {
   const [user, setUser] = useRecoilState(userAtom);
 
   //State
-  const [symptoms, setSymptoms] = useState("");
-  const [medicine, setMedicine] = useState("");
-  const [comments, setComments] = useState("");
-  const [current, setCurrent] = useState("");
+  // const [symptoms, setSymptoms] = useState("");
+  // const [medicine, setMedicine] = useState("");
+  // const [comments, setComments] = useState("");
+  // const [current, setCurrent] = useState("");
 
-  const givePrescription = (userID, objID) => {
-    axios.post(
-      `/api/doctors/givePrescription`,
-      {
-        userId: userID,
-        symptoms,
-        medicine,
-        objID,
-        comments,
-        date: Date.now(),
-      },
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
-    )
-      .then((res) => {
-        console.log(res.data, "give pres");
-        // setUser(res.data);
-        // localStorage.setItem("user", JSON.stringify(res.data));
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+  // const givePrescription = (userID, objID) => {
+  //   axios.post(
+  //     `/api/doctors/givePrescription`,
+  //     {
+  //       userId: userID,
+  //       symptoms,
+  //       medicine,
+  //       objID,
+  //       comments,
+  //       date: Date.now(),
+  //     },
+  //     {
+  //       headers: {
+  //         Authorization: "Bearer " + token,
+  //       },
+  //     }
+  //   )
+  //     .then((res) => {
+  //       console.log(res.data, "give pres");
+  //       // setUser(res.data);
+  //       // localStorage.setItem("user", JSON.stringify(res.data));
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // };
 
   useEffect(() => {
     const config = {
@@ -69,19 +67,14 @@ const DashboardDoc = ({ history }) => {
       });
   }, []);
 
-  // const toggleCurrent = (_id) => {
-  //   if (current === _id) {
-  //     setCurrent("");
-  //   } else {
-  //     setCurrent(_id);
-  //   }
-  // };
+
   return (
     <>
       <TopNav />
       <Container>
+        {!user ? document.location.reload() : console.log('User detected')}
         <h1>Welcome {user.name}</h1>
-        <Col sm={6} className='text-center'>
+        <Col sm={12} className='text-center'>
           <h3>Your Appointments</h3>
           {
             user.appointments && (
@@ -104,7 +97,8 @@ const DashboardDoc = ({ history }) => {
                       <>
                       </>
                     ) : (
-                        <Button variant='warning'> Prescribe</Button>
+                        <>
+                        </>
                       )}
 
                   </Card.Footer>
@@ -114,10 +108,6 @@ const DashboardDoc = ({ history }) => {
             )
           }
         </Col>
-        <Col sm={6} className='text-center'>
-          { }
-        </Col>
-
       </Container>
     </>
   );

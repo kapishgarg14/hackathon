@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import axios from 'axios'
 import '../styles/covidpage.css'
-import { Button, Row, Col, Form, Container } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { Button, Form, Container } from 'react-bootstrap'
 import TopNav from '../components/TopNav'
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
@@ -50,12 +48,9 @@ const HeartPrediction = ({ history }) => {
           q11: thal
         }
       }
-      const data = await axios.post('https://hacknsut21api.herokuapp.com/heart/', config)
+      const { data } = await axios.get('https://hacknsut21api.herokuapp.com/heart/', config)
       console.log(data)
       setResult(data)
-      // localStorage.setItem('doctorData', JSON.stringify(data))
-      // history.push('/')
-      //window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
 
 
     } catch (err) {
@@ -66,16 +61,11 @@ const HeartPrediction = ({ history }) => {
 
 
 
-  const submitHandler = (e, data) => {
+  const submitHandler = (e) => {
     e.preventDefault()
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
 
-    //login api
-    //checkCovid(email, password)
+    //checking  api
+    checkHeart(age, gender, cp, trestbps, col, fbs, ecg, thalach, exang, oldpeak, thal)
 
   };
 
@@ -252,14 +242,13 @@ const HeartPrediction = ({ history }) => {
                       result === 1 ? (
                         <Container className='text-center my-5'>
                           <h3 variant='danger' className='mb-4' style={{ fontWeight: 'bolder', color: 'red' }}>
-                            You might be infected with CoronaVirus.
+                            You are at a risk for Heart Disease. We would suggest you to book an Appointment
                           </h3>
-                          <Button variant='warning'>Book a Test</Button>
+                          <Button variant='warning' onClick={() => { history.push('/appointment') }}>Book an Appointment</Button>
                         </Container>
                       ) : (
                           <Container className='text-center my-5'>
-                            <h3 variant='success' className='mb-4' style={{ fontWeight: 'bolder', color: 'green' }}>You don't seem to be positive for Covid-19</h3>
-                            <h4>Take Precautions and Stay Safe !!</h4>
+                            <h3 variant='success' className='mb-4' style={{ fontWeight: 'bolder', color: 'green' }}>You are less likely to have a Heart Disease</h3>
                           </Container>
                         )
                     }

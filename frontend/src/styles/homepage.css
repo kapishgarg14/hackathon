@@ -13,6 +13,13 @@
   font-weight: 900;
   color: white;
 }
+.tagline{
+  position: absolute;
+  top: 26%;
+  left: 12%;
+  font-size: 60px;
+  color: white;
+}
 
 .homepageCard{
   text-align: center;

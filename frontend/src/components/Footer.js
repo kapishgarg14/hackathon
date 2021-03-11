@@ -1,30 +1,28 @@
 import React from 'react'
 import '../styles/footer.css'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 
 
 const Footer = () => {
   return (
     <div className=''>
-      <div className='footerMain text-center text-white'>
+      <div className='footerMain text-center text-white' style={{ paddingTop: '80px' }}>
         <Container className='py-5'>
           <h1>Better Health Care Is Our Mission</h1>
           <h6>24/7 SERVICE. SAME DAY APPOINTMENTS ARE AVAILABLE</h6>
-          <Row>
+          <Row style={{ paddingTop: '15px' }}>
             <Col className='text-center text-white text-lg' sm={4}>
               <i className="fas fa-phone-alt"></i> (344) 532-2352
             </Col>
             <Col className='text-center text-white text-lg' sm={4}>
-              <i className="far fa-envelope"></i> support@shop.com
+              <i className="far fa-envelope"></i> support@ChikitsApp.com
             </Col>
             <Col className='text-center text-white text-lg' sm={4}>
-              <i className="fas fa-search-location"></i>1235 Navi Mumbai, Mumbai, Maharashtra
+              <i className="fas fa-search-location"></i>1235 New Delhi, Delhi, India
             </Col>
           </Row>
 
-          <Button variant="warning" size="lg" className='appointmentBtn'>
-            Book an Appointment Today !
-          </Button>
+
         </Container>
       </div>
 

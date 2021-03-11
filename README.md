@@ -29,7 +29,7 @@
     An online portal to simplify the complexities of healthcare in these trying times!
     <br />
     <!-- Yaha Hosted link dalni -->
-    <a href=""><strong>Hosted Website »</strong></a>
+    <a href="https://tranquil-beach-75910.herokuapp.com/"><strong>Hosted Website »</strong></a>
     <br />
     <br />
     <a href="https://github.com/AkshatSaraswat03/hackathon/tree/master/backend">Backend Code</a>

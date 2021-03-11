@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import axios from 'axios'
 import '../styles/covidpage.css'
-import { Button, Row, Col, Form, Container } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { Button, Form, Container } from 'react-bootstrap'
 import TopNav from '../components/TopNav'
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
@@ -16,7 +14,7 @@ const CovidPage = ({ history }) => {
 
   const [age, setAge] = useState(18)
   const [gender, setGender] = useState(null);
-  const [temp, setTemp] = useState(null)
+  const [temp, setTemp] = useState('')
   const [cough, setCough] = useState(0)
   const [throat, setThroat] = useState(null)
   const [weakness, setWeakness] = useState(null)
@@ -68,7 +66,7 @@ const CovidPage = ({ history }) => {
       const { data } = await axios.get('https://hacknsut21api.herokuapp.com/covid/', config)
       console.log(data)
       setResult(data)
-
+      setLoading(false)
       //localStorage.setItem('doctorData', JSON.stringify(data))
       //history.push('/')
       //window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
@@ -91,6 +89,7 @@ const CovidPage = ({ history }) => {
     }
 
     //login api
+    setLoading(true)
     checkCovid(age, gender, temp, cough, throat, weakness, breathing, drowsiness, chest, travel, diabetes, heart, lung, stroke, symptoms, BP, kidney, appetite, smell)
 
   };
@@ -459,11 +458,12 @@ const CovidPage = ({ history }) => {
                     onChange={e => setSmell(e.currentTarget.value)}
                   />
                 </Form.Group>
-                <div className='text-center'>
+                <div className='text-center mb-5'>
                   <Button type='button'
                     variant='success'
                     block
                     onClick={submitHandler}
+
                   >Detect</Button>
                 </div>
               </Form>
@@ -482,7 +482,7 @@ const CovidPage = ({ history }) => {
                           <h3 variant='danger' className='mb-4' style={{ fontWeight: 'bolder', color: 'red' }}>
                             You might be infected with CoronaVirus.
                           </h3>
-                          <Button variant='warning'>Book a Test</Button>
+                          <Button variant='warning' onClick={() => { history.push('/testing') }}>Book a Test</Button>
                         </Container>
                       ) : (
                           <Container className='text-center my-5'>

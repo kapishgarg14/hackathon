@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useRecoilState } from "recoil";
@@ -37,7 +37,7 @@ const UserLoginPage = ({ history }) => {
       await localStorage.setItem('user', JSON.stringify(data))
       await localStorage.setItem('token', JSON.stringify(data.token))
       await localStorage.setItem('type', 'User')
-      history.push('/')
+      history.push('/dashboardUser')
       //await redirect()
 
     } catch (err) {
